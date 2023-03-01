@@ -1,0 +1,117 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Http\Requests\StoreRekamMedikRequest;
+use App\Http\Requests\UpdateRekamMedikRequest;
+use App\Models\RekamMedik;
+use Illuminate\Http\Request;
+use Yajra\DataTables\Facades\DataTables;
+
+class RekamMedikController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index(Request $request)
+    {
+        if ($request->ajax()) {
+            $rmd = RekamMedik::with(['tipe_perawatan','poli'])->get();
+            return DataTables::of($rmd) ->addIndexColumn()
+            // ->addColumn('valid', function ($item) {
+            //     if ($item->is_valid == 'true')
+            //         $keterangan = '<td><span class="badge rounded-pill badge-success">Valid</span></td>';
+            //     else
+            //         $keterangan = '<td>
+            //     <span class="badge rounded-pill badge-danger">Belum di validasi</span>
+            //     </td>';
+            //     return $keterangan;
+            // })
+            // ->addColumn('table', function ($item) {
+            //     if ($item->table_id == 'gojek') {
+            //         $table = '<span class="badge rounded-pill badge-success">GoFood</span>';
+            //     } elseif ($item->table_id == 'shopee') {
+            //         $table = '<span class="badge rounded-pill badge-danger">ShopeeFood</span>';
+            //     } else {
+            //         $table = '<span class="badge rounded-pill badge-primary">Cafe</span>';
+            //     }
+            //     return $table;
+            // })
+            ->addColumn('action', function ($item) {
+            })
+            ->rawColumns(['action'])
+            ->make(true);
+        }else{
+            return view('admin.rekam-medik');
+        }
+        
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \App\Http\Requests\StoreRekamMedikRequest  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(StoreRekamMedikRequest $request)
+    {
+        //
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\RekamMedik  $rekamMedik
+     * @return \Illuminate\Http\Response
+     */
+    public function show(RekamMedik $rekamMedik)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Models\RekamMedik  $rekamMedik
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(RekamMedik $rekamMedik)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \App\Http\Requests\UpdateRekamMedikRequest  $request
+     * @param  \App\Models\RekamMedik  $rekamMedik
+     * @return \Illuminate\Http\Response
+     */
+    public function update(UpdateRekamMedikRequest $request, RekamMedik $rekamMedik)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\RekamMedik  $rekamMedik
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(RekamMedik $rekamMedik)
+    {
+        //
+    }
+}
