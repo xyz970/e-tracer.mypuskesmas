@@ -1,5 +1,5 @@
 @extends('layouts.simple.master')
-@section('title', 'Data Rekam Medik')
+@section('title', 'Data Poli')
 
 @section('css')
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendors/datatables.css') }}">
@@ -10,12 +10,12 @@
 @endsection
 
 @section('breadcrumb-title')
-    <h3>Data Rekam Medik</h3>
+    <h3>Data Poli</h3>
 @endsection
 
 @section('breadcrumb-items')
     <li class="breadcrumb-item">Data</li>
-    <li class="breadcrumb-item active">Data Rekam Medik</li>
+    <li class="breadcrumb-item active">Data Poli</li>
 @endsection
 
 @section('content')
@@ -128,21 +128,12 @@
                                 data-bs-toggle="modal" data-bs-target=".tambahData">Tambah Data</button>
                         </div>
                         <div class="table-responsive">
-                            <table class="display" id="data-rmd">
+                            <table class="display" id="data-poli">
                                 <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th>NIK</th>
-                                        <th>Nama Pasien</th>
-                                        <th>Jenis Kelamin</th>
-                                        <th>No.BPJS</th>
-                                        <th>Alamat</th>
-                                        <th>No HP</th>
-                                        <th>Tanggal Lahir</th>
-                                        <th>Umur</th>
-                                        <th>Poli Tujuan</th>
-                                        <th>Tanggal Berobat</th>
-                                        <th>Status</th>
+                                        <th>Poli</th>
+                                        <th>Detail</th>
                                     </tr>
                                 </thead>
                                 <tbody></tbody>
@@ -178,61 +169,26 @@
         })
 
         function loadTable() {
-            $('#data-rmd').DataTable({
+            $('#data-poli').DataTable({
                 "ordering": false,
                 destroy: true,
                 processing: true,
                 serverSide: true,
-                ajax: "{{ route('rmd.index') }}",
+                ajax: "{{ route('poli.index') }}",
                 columns: [{
                         data: 'id',
                         name: 'id',
                         // visible: false
                     },
                     {
-                        data: 'nik',
-                        name: 'nik',
+                        data: 'keterangan',
+                        name: 'keterangan',
                         // visible: false
-                    },
+                    }, 
                     {
-                        data: 'nama_pasien',
-                        name: 'nama_pasien'
-                    },
-                    {
-                        data: 'jk',
-                        name: 'jk'
-                    },
-                    {
-                        data: 'no_bpjs',
-                        name: 'no_bpjs'
-                    },
-                    {
-                        data: 'alamat',
-                        name: 'alamat'
-                    },
-                    {
-                        data: 'no_hp',
-                        name: 'no_hp'
-                    },
-                    {
-                        data: 'tanggal_lahir',
-                        name: 'tanggal_lahir'
-                    },
-                    {
-                        data: 'umur',
-                        name: 'umur'
-                    },
-                    {
-                        data: 'tipe_perawatan.keterangan',
-                        name: 'tipe_perawatan.keterangan'
-                    },
-                    {
-                        data: 'tanggal_berobat',
-                        name: 'tanggal_berobat'
-                    },
-                    {
-                        data: 'poli.keterangan',
-                        name: 'poli.keterangan'
+                        data: 'detail',
+                        name: 'detail',
+                        // visible: false
                     },
 
                     // {

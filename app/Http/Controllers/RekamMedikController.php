@@ -18,35 +18,34 @@ class RekamMedikController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $rmd = RekamMedik::with(['tipe_perawatan','poli'])->get();
-            return DataTables::of($rmd) ->addIndexColumn()
-            // ->addColumn('valid', function ($item) {
-            //     if ($item->is_valid == 'true')
-            //         $keterangan = '<td><span class="badge rounded-pill badge-success">Valid</span></td>';
-            //     else
-            //         $keterangan = '<td>
-            //     <span class="badge rounded-pill badge-danger">Belum di validasi</span>
-            //     </td>';
-            //     return $keterangan;
-            // })
-            // ->addColumn('table', function ($item) {
-            //     if ($item->table_id == 'gojek') {
-            //         $table = '<span class="badge rounded-pill badge-success">GoFood</span>';
-            //     } elseif ($item->table_id == 'shopee') {
-            //         $table = '<span class="badge rounded-pill badge-danger">ShopeeFood</span>';
-            //     } else {
-            //         $table = '<span class="badge rounded-pill badge-primary">Cafe</span>';
-            //     }
-            //     return $table;
-            // })
-            ->addColumn('action', function ($item) {
-            })
-            ->rawColumns(['action'])
-            ->make(true);
-        }else{
+            $rmd = RekamMedik::with(['tipe_perawatan', 'poli'])->get();
+            return DataTables::of($rmd)->addIndexColumn()
+                // ->addColumn('valid', function ($item) {
+                //     if ($item->is_valid == 'true')
+                //         $keterangan = '<td><span class="badge rounded-pill badge-success">Valid</span></td>';
+                //     else
+                //         $keterangan = '<td>
+                //     <span class="badge rounded-pill badge-danger">Belum di validasi</span>
+                //     </td>';
+                //     return $keterangan;
+                // })
+                // ->addColumn('table', function ($item) {
+                //     if ($item->table_id == 'gojek') {
+                //         $table = '<span class="badge rounded-pill badge-success">GoFood</span>';
+                //     } elseif ($item->table_id == 'shopee') {
+                //         $table = '<span class="badge rounded-pill badge-danger">ShopeeFood</span>';
+                //     } else {
+                //         $table = '<span class="badge rounded-pill badge-primary">Cafe</span>';
+                //     }
+                //     return $table;
+                // })
+                ->addColumn('action', function ($item) {
+                })
+                ->rawColumns(['action'])
+                ->make(true);
+        } else {
             return view('admin.rekam-medik');
         }
-        
     }
 
     /**
@@ -67,7 +66,26 @@ class RekamMedikController extends Controller
      */
     public function store(StoreRekamMedikRequest $request)
     {
-        //
+        $input = $request->only([
+            'id',
+            'nik',
+            'nama_pasien',
+            'jk',
+            'no_bpjs',
+            'alamat',
+            'no_hp',
+            'tanggal_lahir',
+            'umur',
+            'poli_id',
+            'tanggal_berobat',
+            'tipe_perawatan_id'
+        ]);
+        RekamMedik::create($input);
+        return redirect()->back()->with('tambahData','success');
+        // dd($input);
+        // if (!$request->validate()) {
+        //     dd($request->v);
+        // }
     }
 
     /**

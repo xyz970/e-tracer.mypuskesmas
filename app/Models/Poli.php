@@ -13,4 +13,8 @@ class Poli extends Model
     {
         return $this->hasOne(RekamMedik::class);
     }
+    public function dokter()
+    {
+        return $this->hasOne(Dokter::class);
+    }
 }

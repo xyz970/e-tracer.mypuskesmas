@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StorePoliRequest;
-use App\Http\Requests\UpdatePoliRequest;
-use App\Models\Poli;
+use App\Models\Role;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 
-class PoliController extends Controller
+// use Illuminate\Http\Request;
+
+class PetugasController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,16 +19,13 @@ class PoliController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $poli = Poli::all();
-            return DataTables::of($poli)
-            ->addColumn('detail',function($item){
-                return '<button onclick="update('.$item->id.')" class="btn btn-icon me-2 btn-primary"><span class="tf-icons fa fa-info"></span></button>';
-            })
+            $user = User::with('role')->get();
+            return DataTables::of($user)
             ->addIndexColumn()
-            ->rawColumns(['detail'])
             ->make(true);
         }
-        return view('admin.poli');
+        $role = Role::all();
+        return view('admin.petugas',compact('role'));
     }
 
     /**
@@ -43,21 +41,23 @@ class PoliController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StorePoliRequest  $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StorePoliRequest $request)
+    public function store(Request $request)
     {
-        //
+        $input = $request->only(['nama','password','jk','role_id','email']);
+        User::create($input);
+        return redirect()->back()->with('tambahData','true');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Poli  $poli
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Poli $poli)
+    public function show($id)
     {
         //
     }
@@ -65,10 +65,10 @@ class PoliController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Poli  $poli
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Poli $poli)
+    public function edit($id)
     {
         //
     }
@@ -76,11 +76,11 @@ class PoliController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdatePoliRequest  $request
-     * @param  \App\Models\Poli  $poli
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdatePoliRequest $request, Poli $poli)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -88,10 +88,10 @@ class PoliController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Poli  $poli
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Poli $poli)
+    public function destroy($id)
     {
         //
     }

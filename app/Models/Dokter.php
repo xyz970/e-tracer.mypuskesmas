@@ -9,4 +9,9 @@ class Dokter extends Model
 {
     use HasFactory;
     protected $table = "dokter";
+    protected $guarded = [];
+    public function poli()
+    {
+        return $this->belongsTo(Poli::class,'id_poli');
+    }
 }

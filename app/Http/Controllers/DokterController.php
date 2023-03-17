@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreDokterRequest;
 use App\Http\Requests\UpdateDokterRequest;
 use App\Models\Dokter;
+use App\Models\Poli;
+use Illuminate\Http\Request;
+use Yajra\DataTables\Facades\DataTables;
 
 class DokterController extends Controller
 {
@@ -13,12 +16,23 @@ class DokterController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        if ($request->ajax()) {
+            $dokter = Dokter::with(['poli'])->get();
+            return DataTables::of($dokter)
+            ->addColumn('detail',function($item){
+                return '<button onclick="update('.$item->id.')" class="btn btn-icon me-2 btn-primary"><span class="tf-icons fa fa-info"></span></button>';
+            })
+            ->addIndexColumn()
+            ->rawColumns(['detail'])
+            ->make(true);
+        }
+        $poli = Poli::all();
+       return view('admin.dokter',compact(['poli']));
     }
 
-    /**
+    /**`
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
@@ -36,7 +50,9 @@ class DokterController extends Controller
      */
     public function store(StoreDokterRequest $request)
     {
-        //
+        $input = $request->only(['id','id_poli','nama','jk']);
+        Dokter::create($input);
+        return redirect()->back()->with('tambahData','success');
     }
 
     /**

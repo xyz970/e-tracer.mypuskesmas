@@ -1,5 +1,5 @@
 @extends('layouts.simple.master')
-@section('title', 'Data Rekam Medik')
+@section('title', 'Data Poli')
 
 @section('css')
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendors/datatables.css') }}">
@@ -10,12 +10,12 @@
 @endsection
 
 @section('breadcrumb-title')
-    <h3>Data Rekam Medik</h3>
+    <h3>Data Dokter</h3>
 @endsection
 
 @section('breadcrumb-items')
     <li class="breadcrumb-item">Data</li>
-    <li class="breadcrumb-item active">Data Rekam Medik</li>
+    <li class="breadcrumb-item active">Data Dokter</li>
 @endsection
 
 @section('content')
@@ -40,30 +40,40 @@
                                     <div class="text-center" style="padding-bottom: 2rem">
                                         <h4>Tambah Data</h4>
                                     </div>
-                                    <form method="POST" action="{{route('rmd.store')}}">
+                                    <form method="POST" action="{{route('dokter.store')}}">
                                         {{ csrf_field() }}
                                         <div class="mb-3 row">
-                                            <label class="col-sm-3 col-form-label f-w-600" for="id_rm">ID RM</label>
+                                            <label class="col-sm-3 col-form-label f-w-600" for="id">ID Dokter</label>
                                             <div class="col-sm-9">
-                                                <input class="id_rm form-control" type="text" required=""
-                                                    name="id_rm" data-bs-original-title="" title="">
+                                                <input class="id form-control" type="text" required=""
+                                                    name="id" data-bs-original-title="" title="">
                                             </div>
                                         </div>
                                         <div class="mb-3 row">
-                                            <label class="col-sm-3 col-form-label f-w-600" for="nik">NIK</label>
+                                            <label class="col-sm-3 col-form-label f-w-600" for="nama">Nama</label>
                                             <div class="col-sm-9">
-                                                <input class="nik form-control" type="text" required="" name="nik"
+                                                <input class="nama form-control" type="text" required="" name="nama"
                                                     data-bs-original-title="" title="">
                                             </div>
                                         </div>
                                         <div class="mb-3 row">
+                                            <label class="col-sm-3 col-form-label f-w-600" for="id_poli">Poli</label>
+                                            <div class="col-sm-9">
+												<select class="id_poli form-control" name="id_poli">
+                                                    @foreach ($poli as $item)
+													<option value="{{$item->id}}">{{$item->keterangan}}</option>
+                                                    @endforeach
+												  </select>
+                                            </div>
+                                        </div>
+                                        {{-- <div class="mb-3 row">
                                             <label class="col-sm-3 col-form-label f-w-600" for="nama_pasien">Nama
                                                 Pasien</label>
                                             <div class="col-sm-9">
                                                 <input class="nama_pasien form-control" type="text" required=""
                                                     name="nama_pasien" data-bs-original-title="" title="">
                                             </div>
-                                        </div>
+                                        </div> --}}
 										<div class="mb-3 row">
                                             <label class="col-sm-3 col-form-label f-w-600" for="jk">Jenis Kelamin</label>
                                             <div class="col-sm-9">
@@ -73,43 +83,8 @@
 												  </select>
                                             </div>
                                         </div>
-										<div class="mb-3 row">
-                                            <label class="col-sm-3 col-form-label f-w-600" for="no_bpjs">No. BPJS</label>
-                                            <div class="col-sm-9">
-                                                <input class="no_bpjs form-control" type="text" name="no_bpjs"
-                                                    data-bs-original-title="" title="">
-                                            </div>
-                                        </div>
-										<div class="mb-3 row">
-                                            <label class="col-sm-3 col-form-label f-w-600" for="alamat">Alamat</label>
-                                            <div class="col-sm-9">
-                                                <input class="alamat form-control" type="text" required="" name="alamat"
-                                                    data-bs-original-title="" title="">
-                                            </div>
-                                        </div>
-										<div class="mb-3 row">
-                                            <label class="col-sm-3 col-form-label f-w-600" for="no_hp">No. HP</label>
-                                            <div class="col-sm-9">
-                                                <input class="no_hp form-control" type="text" required="" name="no_hp"
-                                                    data-bs-original-title="" title="">
-                                            </div>
-                                        </div>
-										<div class="mb-3 row">
-                                            <label class="col-sm-3 col-form-label f-w-600" for="tanggal_lahir">Tanggal Lahir</label>
-                                            <div class="col-sm-9">
-												{{-- <input class="datepicker-here form-control digits" name="date" type="text" id="inputRange" data-range="true" data-multiple-dates-separator=" - " data-language="en" autocomplete="off"> --}}
-                                                <input class="datepicker-here form-control digits" data-date-format="yyyy-mm-dd" data-position="top right" type="text" data-language="en" required="" name="tanggal_lahir"
-                                                    data-bs-original-title="" title="">
-                                            </div>
-                                        </div>
-										<div class="mb-3 row">
-                                            <label class="col-sm-3 col-form-label f-w-600" for="umur">Umur</label>
-                                            <div class="col-sm-9">
-                                                <input class="umur form-control" type="number" required="" name="umur"
-                                                    data-bs-original-title="" title="">
-                                            </div>
-                                        </div>
-
+										
+										
                                 </div>
                                 <div class="modal-footer">
                                     <button class="btn btn-secondary" type="button" data-bs-dismiss="modal"
@@ -128,21 +103,13 @@
                                 data-bs-toggle="modal" data-bs-target=".tambahData">Tambah Data</button>
                         </div>
                         <div class="table-responsive">
-                            <table class="display" id="data-rmd">
+                            <table class="display" id="data-dokter">
                                 <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th>NIK</th>
-                                        <th>Nama Pasien</th>
+                                        <th>Nama Dokter</th>
                                         <th>Jenis Kelamin</th>
-                                        <th>No.BPJS</th>
-                                        <th>Alamat</th>
-                                        <th>No HP</th>
-                                        <th>Tanggal Lahir</th>
-                                        <th>Umur</th>
-                                        <th>Poli Tujuan</th>
-                                        <th>Tanggal Berobat</th>
-                                        <th>Status</th>
+                                        <th>Poli</th>
                                     </tr>
                                 </thead>
                                 <tbody></tbody>
@@ -178,61 +145,31 @@
         })
 
         function loadTable() {
-            $('#data-rmd').DataTable({
+            $('#data-dokter').DataTable({
                 "ordering": false,
                 destroy: true,
                 processing: true,
                 serverSide: true,
-                ajax: "{{ route('rmd.index') }}",
+                ajax: "{{ route('dokter.index') }}",
                 columns: [{
                         data: 'id',
                         name: 'id',
                         // visible: false
                     },
                     {
-                        data: 'nik',
-                        name: 'nik',
+                        data: 'nama',
+                        name: 'nama',
                         // visible: false
-                    },
-                    {
-                        data: 'nama_pasien',
-                        name: 'nama_pasien'
-                    },
+                    }, 
                     {
                         data: 'jk',
-                        name: 'jk'
-                    },
-                    {
-                        data: 'no_bpjs',
-                        name: 'no_bpjs'
-                    },
-                    {
-                        data: 'alamat',
-                        name: 'alamat'
-                    },
-                    {
-                        data: 'no_hp',
-                        name: 'no_hp'
-                    },
-                    {
-                        data: 'tanggal_lahir',
-                        name: 'tanggal_lahir'
-                    },
-                    {
-                        data: 'umur',
-                        name: 'umur'
-                    },
-                    {
-                        data: 'tipe_perawatan.keterangan',
-                        name: 'tipe_perawatan.keterangan'
-                    },
-                    {
-                        data: 'tanggal_berobat',
-                        name: 'tanggal_berobat'
-                    },
+                        name: 'jk',
+                        // visible: false
+                    }, 
                     {
                         data: 'poli.keterangan',
-                        name: 'poli.keterangan'
+                        name: 'poli.keterangan',
+                        // visible: false
                     },
 
                     // {

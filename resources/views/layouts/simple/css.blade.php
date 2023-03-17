@@ -38,6 +38,7 @@
     }
 
     :root {
+        --bs-danger: #FF3333 !important;
         --theme-deafult: #FF3333 !important;
         --theme-secondary: #FF3333 !important;
     }

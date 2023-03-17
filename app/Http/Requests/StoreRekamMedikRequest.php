@@ -13,7 +13,7 @@ class StoreRekamMedikRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,18 @@ class StoreRekamMedikRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            // 'id' => 'required|integer',
+            // 'nik' => 'required',
+            // 'nama_pasien' => 'required',
+            // 'jk' => 'required',
+            // 'no_bpjs' => '',
+            // 'alamat' => 'required',
+            // 'no_hp' => 'required',
+            // 'tanggal_lahir' => 'required',
+            // 'umur' => 'required',
+            // 'poli_id' => 'required',
+            // 'tanggal_berobat' => 'required',
+            // 'tipe_perawatan_id' => 'required',
         ];
     }
 }
