@@ -9,4 +9,8 @@ class StatusPeminjaman extends Model
 {
     use HasFactory;
     protected $table = "status_peminjaman";
+    public function peminjaman()
+    {
+        return $this->hasOne(Peminjaman::class);
+    }
 }

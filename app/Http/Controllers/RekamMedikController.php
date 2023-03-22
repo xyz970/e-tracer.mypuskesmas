@@ -132,4 +132,10 @@ class RekamMedikController extends Controller
     {
         //
     }
+
+    public function getData()
+    {
+        $rmd = RekamMedik::with(['tipe_perawatan', 'poli'])->get();
+        return response()->json($rmd);
+    }
 }

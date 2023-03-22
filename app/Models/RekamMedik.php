@@ -18,4 +18,8 @@ class RekamMedik extends Model
     {
         return $this->belongsTo(Poli::class);
     }
+    public function peminjaman()
+    {
+        return $this->hasOne(Peminjaman::class);
+    }
 }
