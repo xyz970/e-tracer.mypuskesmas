@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 use Yajra\DataTables\Facades\DataTables;
 
 // use Illuminate\Http\Request;
@@ -46,7 +47,8 @@ class PetugasController extends Controller
      */
     public function store(Request $request)
     {
-        $input = $request->only(['nama','password','jk','role_id','email']);
+        $input = $request->only(['nama','jk','role_id','email']);
+        $input = $input + array('password'=>'12345678');
         User::create($input);
         return redirect()->back()->with('tambahData','true');
     }

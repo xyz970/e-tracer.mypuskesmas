@@ -62,13 +62,13 @@
 												data-bs-original-title="" title="">
 										</div>
 									</div>
-									<div class="mb-3 row">
+									{{-- <div class="mb-3 row">
 										<label class="col-sm-3 col-form-label f-w-600" for="password">Password</label>
 										<div class="col-sm-9">
 											<input class="password form-control" type="text" required="" name="password"
 												data-bs-original-title="" title="">
 										</div>
-									</div>
+									</div> --}}
 									
 									<div class="mb-3 row">
 										<label class="col-sm-3 col-form-label f-w-600" for="role_id">Role</label>

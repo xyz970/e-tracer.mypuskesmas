@@ -30,15 +30,16 @@
                     <h1 class="auth-title fw-bold" style="color: #FF3333">Log in.</h1>
                     <p class="auth-subtitle mb-5">Silahkan masukkan email dan password anda                    </p>
 
-                    <form action="index.html">
+                    <form action="{{route('login.process')}}" method="post">
+                    {{ csrf_field() }}
                         <div class="form-group position-relative has-icon-left mb-4">
-                            <input type="text" class="form-control border-active form-control-xl" placeholder="Email">
+                            <input type="text" class="form-control border-active form-control-xl" name="email" placeholder="Email">
                             <div class="form-control-icon">
                                 <i class="fa fa-at"></i>
                             </div>
                         </div>
                         <div class="form-group position-relative has-icon-left mb-4">
-                            <input type="password" class="form-control form-control-xl" placeholder="Password">
+                            <input type="password" class="form-control form-control-xl" name="password" placeholder="Password">
                             <div class="form-control-icon">
                                 <i class="fa fa-lock"></i>
                             </div>
