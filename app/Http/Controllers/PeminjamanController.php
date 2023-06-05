@@ -71,13 +71,61 @@ class PeminjamanController extends Controller
             '[NO.RM]' => $input['id'],
             '[NAMA_PASIEN]' => $rmd->nama_pasien,
             '[POLI]' => $rmd->poli->keterangan,
-            '[TANGGAL_PINJAM]' => Carbon::parse($peminjaman->waktu_peminjaman)->format('d M Y'),
+            '[TANGGAL_PINJAM]' => Carbon::parse($peminjaman->waktu_peminjaman)->translatedFormat('d F Y'),
         );
     
         $nama_file = 'peminjaman.doc';
         $exp = new ExportWord;
-        return $exp->export($file, $array, $nama_file);
-        // return redirect()->back();
+
+        // return $exp->export($file, $array, $nama_file);
+        $data = array(
+            'rm' => $input['id'],
+            'poli'=>$rmd->poli->keterangan,
+            'tanggal' => Carbon::parse($peminjaman->waktu_peminjaman)->translatedFormat('d F Y'),
+        );
+        return view('layouts.surat.slip_permintaan',compact('data'));
+        /* Set the PDF Engine Renderer Path */
+        // $domPdfPath = base_path('vendor/dompdf/dompdf');
+        // \PhpOffice\PhpWord\Settings::setPdfRendererPath($domPdfPath);
+        // \PhpOffice\PhpWord\Settings::setPdfRendererName('DomPDF');
+         
+        // /*@ Reading doc file */
+        // $template = new \PhpOffice\PhpWord\TemplateProcessor(public_path('template/Slip_Permintaan.docx'));
+ 
+        // /*@ Replacing variables in doc file */
+        // $template->setValue('[NO.RM]' ,$input['id']);
+        // $template->setValue('[POLI]', $rmd->poli->keterangan,);
+        // $template->setValue('[TANGGAL_PINJAM]', Carbon::parse($peminjaman->waktu_peminjaman)->translatedFormat('d F Y'));
+ 
+        // /*@ Save Temporary Word File With New Name */
+        // $saveDocPath = public_path('new-result.docx');
+        // $template->saveAs($saveDocPath);
+         
+        // // Load temporarily create word file
+        // $Content = \PhpOffice\PhpWord\IOFactory::load($saveDocPath); 
+ 
+        // //Save it into PDF
+        // $savePdfPath = public_path('Peminjaman.pdf');
+ 
+        // /*@ If already PDF exists then delete it */
+        // if ( file_exists($savePdfPath) ) {
+        //     unlink($savePdfPath);
+        // }
+ 
+        // //Save it into PDF
+        // $PDFWriter = \PhpOffice\PhpWord\IOFactory::createWriter($Content,'PDF');
+        // $PDFWriter->save($savePdfPath); 
+        // echo 'File has been successfully converted';
+ 
+        // /*@ Remove temporarily created word file */
+        // if ( file_exists($saveDocPath) ) {
+        //     unlink($saveDocPath);
+        // }
+        // header("Content-type: application/pdf");
+        // header("Content-disposition: inline; filename={$savePdfPath}");
+        // header("Content-length: ".strlen($savePdfPath));
+        // // return redirect()->back();
+        // echo $savePdfPath;
     }
 
     /**

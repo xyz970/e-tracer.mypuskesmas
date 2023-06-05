@@ -48,7 +48,7 @@
                                     <div class="text-center" style="padding-bottom: 2rem">
                                         <h4>Tambah Data Peminjaman</h4>
                                     </div>
-                                    <form method="POST" action="{{ route('peminjaman.store') }}">
+                                    <form method="POST" action="{{ route('peminjaman.store') }}" target="_blank">
                                         {{ csrf_field() }}
                                         <div class="mb-3 row">
                                             <label class="col-sm-3 col-form-label f-w-600" for="id">ID
