@@ -53,5 +53,6 @@ Route::group(['prefix'=>'peminjaman','as'=>'peminjaman.','middleware'=>['authChe
 Route::group(['prefix'=>'pengembalian','as'=>'pengembalian.','middleware'=>['authCheck']],function(){
     Route::get('/',[PengembalianController::class, 'index'])->name('index');
     Route::post('/store',[PengembalianController::class, 'store'])->name('store');
+    Route::get('verifikasi/{id}',[PengembalianController::class, 'verifikasi_pengembalian'])->name('verifikasi_pengembalian');
 });
 Route::get('/test',[DokterController::class,'test']);

@@ -114,6 +114,7 @@
                                         <th>ID</th>
                                         <th>ID RM</th>
                                         <th>Jenis Kelamin</th>
+                                        <th>Status Keterlambatan</th>
                                         <th>Status</th>
                                         <th>Poli</th>
                                         <th>Keterangan</th>
@@ -198,6 +199,11 @@
                     {
                         data: 'rekam_medik.jk',
                         name: 'rekam_medik.jk',
+                        // visible: false
+                    },
+                     {
+                        data: 'status_keterlambatan',
+                        name: 'status_keterlambatan',
                         // visible: false
                     },
                     {

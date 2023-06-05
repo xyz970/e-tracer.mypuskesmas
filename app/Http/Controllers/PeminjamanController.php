@@ -27,8 +27,15 @@ class PeminjamanController extends Controller
             ->addColumn('detail',function($item){
                 return '<button onclick="update('.$item->id.')" class="btn btn-icon me-2 btn-primary"><span class="tf-icons fa fa-info"></span></button>';
             })
+            ->addColumn('status_keterlambatan',function($item){
+                if ($item->terlambat == 'true') {
+                    return '<span class="badge rounded-pill badge-danger">Terlambat</span>';   
+                } else {
+                    return '<span class="badge rounded-pill badge-success">Tepat Waktu</span>';
+                } 
+            })
             ->addIndexColumn()
-            ->rawColumns(['detail'])
+            ->rawColumns(['detail','status_keterlambatan'])
             ->make(true);
         }
         $poli = Poli::all();
