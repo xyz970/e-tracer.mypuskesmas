@@ -423,7 +423,7 @@
         <div style="-aw-headerfooter-type:header-primary; clear:both">
             <p style="text-align:center; font-size:14pt"><span
                     style="height:0pt; text-align:left; display:block; position:absolute; z-index:-65535"><img
-                        src="{{ asset('assets/images/logo-instansi.jpeg') }}" width="94" height="97"
+                        src="{{ asset('images/logo-instansi.jpeg') }}" width="94" height="97"
                         alt=""
                         style="margin-top:0.4pt; margin-left:-22.9pt; -aw-left-pos:-22.9pt; -aw-rel-hpos:column; -aw-rel-vpos:paragraph; -aw-top-pos:0.4pt; -aw-wrap-type:none; position:absolute" /></span><span>PEMERINTAH
                     KABUPATEN JEMBER</span></p>
@@ -436,7 +436,7 @@
             </p>
             <p class="ListParagraph" style="margin-left:0pt; text-align:center; widows:0; orphans:0; font-size:12pt">
                 <span style="height:0pt; text-align:left; display:block; position:absolute; z-index:-65536"><img
-                        src="{{ asset('assets/images/garis.png') }}" width="775" height="8" alt=""
+                        src="{{ asset('images/garis.png') }}" width="775" height="8" alt=""
                         style="margin-top:14.05pt; margin-left:-26.4pt; -aw-left-pos:-24.8pt; -aw-rel-hpos:column; -aw-rel-vpos:paragraph; -aw-top-pos:14.95pt; -aw-wrap-type:none; position:absolute" /></span><span>Telp
                     0336442192, Email:</span><span style="color:#4472c4">semboro.puskesmas@gmail.com </span><span
                     style="color:#4472c4; -aw-import:spaces">&#xa0;</span>

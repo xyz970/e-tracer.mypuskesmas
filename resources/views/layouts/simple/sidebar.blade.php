@@ -5,7 +5,7 @@
 			<div class="back-btn"><i class="fa fa-angle-left"></i></div>
 			
 		</div>
-		{{-- <div class="logo-icon-wrapper"><a href=""><img class="img-fluid" src="{{asset('assets/images/logo/logo-icon.png')}}" alt=""></a></div> --}}
+		{{-- <div class="logo-icon-wrapper"><a href=""><img class="img-fluid" src="{{asset('images/logo/logo-icon.png')}}" alt=""></a></div> --}}
 		<div class="logo-icon-wrapper"><a href=""><h1>E-Tracer</h1></a></div>
 		<nav class="sidebar-main">
 			

@@ -2,7 +2,7 @@
 @section('title', 'Data Petugas')
 
 @section('css')
-<link rel="stylesheet" type="text/css" href="{{asset('assets/css/vendors/datatables.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('css/vendors/datatables.css')}}">
 @endsection
 
 @section('style')
@@ -129,8 +129,8 @@
 @endsection
 
 @section('script')
-<script src="{{asset('assets/js/datatable/datatables/jquery.dataTables.min.js')}}"></script>
-<script src="{{asset('assets/js/datatable/datatables/datatable.custom.js')}}"></script>
+<script src="{{asset('js/datatable/datatables/jquery.dataTables.min.js')}}"></script>
+<script src="{{asset('js/datatable/datatables/datatable.custom.js')}}"></script>
 @if (Session::has('tambahData'))
 <script>
     swal({

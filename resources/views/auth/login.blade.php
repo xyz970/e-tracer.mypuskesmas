@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login  E-Tracer</title>
     {{-- <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet"> --}}
-    <link rel="stylesheet" href="{{ asset('assets/css/vendors/bootstrap.css') }}">
-    <link rel="stylesheet" href="{{asset('assets/css/app.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/css/auth.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/css/font-awesome.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/vendors/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{asset('css/app.css')}}">
+    <link rel="stylesheet" href="{{asset('css/auth.css')}}">
+    <link rel="stylesheet" href="{{asset('css/font-awesome.css')}}">
     <style>
         .form-control:focus{
             border-color: #FF3333 !important;

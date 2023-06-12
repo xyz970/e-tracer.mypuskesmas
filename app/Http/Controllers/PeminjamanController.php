@@ -108,7 +108,7 @@ class PeminjamanController extends Controller
             'tanggal_pinjam' => Carbon::parse($peminjaman->waktu_peminjaman)->translatedFormat('d F Y'),
         );
         $pdf = Pdf::loadView('layouts.surat.tracer', $array);
-        $pdf->setPaper('a4', 'portrait');
+        $pdf->setPaper([0,0,300,550], 'landscape');
         return $pdf->stream('tracer.pdf');
         // $nama_file = 'peminjaman.docx';
         // $exp = new ExportWord;

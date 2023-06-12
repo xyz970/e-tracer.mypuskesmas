@@ -13,7 +13,7 @@
       </div>
     </form>
     <div class="header-logo-wrapper col-auto p-0">
-      <div class="logo-wrapper"><a href=""><img class="img-fluid" src="{{asset('assets/images/logo/logo.png')}}" alt=""></a></div>
+      <div class="logo-wrapper"><a href=""><img class="img-fluid" src="{{asset('images/logo/logo.png')}}" alt=""></a></div>
       <div class="toggle-sidebar"><i class="status_toggle middle sidebar-toggle" data-feather="align-center"></i></div>
     </div>
     <div class="left-header col horizontal-wrapper ps-0">
@@ -78,7 +78,7 @@
         </li>
         <li class="profile-nav onhover-dropdown p-0 me-0">
           <div class="media profile-media">
-            <img class="b-r-10" src="{{ Auth::user()->jk == 'L' ? asset('assets/images/dashboard/man.png') : asset('assets/images/dashboard/woman.png')}}" alt="">
+            <img class="b-r-10" src="{{ Auth::user()->jk == 'L' ? asset('images/dashboard/man.png') : asset('images/dashboard/woman.png')}}" alt="">
             <div class="media-body">
               <span>{{ Auth::user()->nama  }}</span>
               <p class="mb-0 font-roboto">{{ Auth::user()->role->keterangan }} <i class="middle fa fa-angle-down"></i></p>

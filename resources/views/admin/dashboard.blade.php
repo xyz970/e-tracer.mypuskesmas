@@ -3,9 +3,9 @@
 @section('title', 'Dashboard')
 
 @section('css')
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendors/animate.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendors/chartist.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendors/date-picker.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/vendors/animate.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/vendors/chartist.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/vendors/date-picker.css') }}">
 @endsection
 
 @section('style')
@@ -35,7 +35,7 @@
                         </div>
                         <div class="greeting-user text-center">
                             <div class="profile-vector"><img class="img-fluid"
-                                    src="{{ Auth::user()->jk == 'L' ? asset('assets/images/dashboard/man-welcome.png') : asset('assets/images/dashboard/woman-welcome.png')}}" alt=""></div>
+                                    src="{{ Auth::user()->jk == 'L' ? asset('images/dashboard/man-welcome.png') : asset('images/dashboard/woman-welcome.png')}}" alt=""></div>
                             <h4 class="f-w-600"><span id="greeting">Good Morning</span> <span class="right-circle"><i
                                         class="fa fa-check-circle f-14 middle"></i></span></h4>
                             <p>{{ Auth::user()->nama }}</p>
@@ -112,23 +112,23 @@
 @endsection
 
 @section('script')
-    <script src="{{ asset('assets/js/chart/chartist/chartist.js') }}"></script>
-    <script src="{{ asset('assets/js/chart/chartist/chartist-plugin-tooltip.js') }}"></script>
-    <script src="{{ asset('assets/js/chart/knob/knob.min.js') }}"></script>
-    <script src="{{ asset('assets/js/chart/knob/knob-chart.js') }}"></script>
-    <script src="{{ asset('assets/js/chart/apex-chart/apex-chart.js') }}"></script>
-    <script src="{{ asset('assets/js/chart/apex-chart/stock-prices.js') }}"></script>
-    <script src="{{ asset('assets/js/notify/bootstrap-notify.min.js') }}"></script>
-    <script src="{{ asset('assets/js/dashboard/default.js') }}"></script>
-    <script src="{{ asset('assets/js/notify/index.js') }}"></script>
-    <script src="{{ asset('assets/js/datepicker/date-picker/datepicker.js') }}"></script>
-    <script src="{{ asset('assets/js/datepicker/date-picker/datepicker.en.js') }}"></script>
-    <script src="{{ asset('assets/js/datepicker/date-picker/datepicker.custom.js') }}"></script>
-    <script src="{{ asset('assets/js/typeahead/handlebars.js') }}"></script>
-    <script src="{{ asset('assets/js/typeahead/typeahead.bundle.js') }}"></script>
-    <script src="{{ asset('assets/js/typeahead/typeahead.custom.js') }}"></script>
-    <script src="{{ asset('assets/js/typeahead-search/handlebars.js') }}"></script>
-    <script src="{{ asset('assets/js/typeahead-search/typeahead-custom.js') }}"></script>
+    <script src="{{ asset('js/chart/chartist/chartist.js') }}"></script>
+    <script src="{{ asset('js/chart/chartist/chartist-plugin-tooltip.js') }}"></script>
+    <script src="{{ asset('js/chart/knob/knob.min.js') }}"></script>
+    <script src="{{ asset('js/chart/knob/knob-chart.js') }}"></script>
+    <script src="{{ asset('js/chart/apex-chart/apex-chart.js') }}"></script>
+    <script src="{{ asset('js/chart/apex-chart/stock-prices.js') }}"></script>
+    <script src="{{ asset('js/notify/bootstrap-notify.min.js') }}"></script>
+    <script src="{{ asset('js/dashboard/default.js') }}"></script>
+    <script src="{{ asset('js/notify/index.js') }}"></script>
+    <script src="{{ asset('js/datepicker/date-picker/datepicker.js') }}"></script>
+    <script src="{{ asset('js/datepicker/date-picker/datepicker.en.js') }}"></script>
+    <script src="{{ asset('js/datepicker/date-picker/datepicker.custom.js') }}"></script>
+    <script src="{{ asset('js/typeahead/handlebars.js') }}"></script>
+    <script src="{{ asset('js/typeahead/typeahead.bundle.js') }}"></script>
+    <script src="{{ asset('js/typeahead/typeahead.custom.js') }}"></script>
+    <script src="{{ asset('js/typeahead-search/handlebars.js') }}"></script>
+    <script src="{{ asset('js/typeahead-search/typeahead-custom.js') }}"></script>
     <script>
         var options = {
             series: [{

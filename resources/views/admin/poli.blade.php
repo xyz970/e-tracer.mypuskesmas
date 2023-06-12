@@ -2,8 +2,8 @@
 @section('title', 'Data Poli')
 
 @section('css')
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendors/datatables.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{asset('assets/css/vendors/date-picker.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/vendors/datatables.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{asset('css/vendors/date-picker.css')}}">
 @endsection
 
 @section('style')
@@ -148,12 +148,12 @@
 
 @section('script')
 
-    <script src="{{ asset('assets/js/datatable/datatables/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('assets/js/select2/select2.full.min.js') }}"></script>
-    {{-- <script src="{{asset('assets/js/sweet-alert/sweetalert.min.js')}}"></script> --}}
-    <script src="{{ asset('assets/js/sweet-alert/sweetalert.min.js') }}"></script>
-<script src="{{asset('assets/js/datepicker/date-picker/datepicker.js')}}"></script>
-<script src="{{asset('assets/js/datepicker/date-picker/datepicker.en.js')}}"></script>
+    <script src="{{ asset('js/datatable/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('js/select2/select2.full.min.js') }}"></script>
+    {{-- <script src="{{asset('js/sweet-alert/sweetalert.min.js')}}"></script> --}}
+    <script src="{{ asset('js/sweet-alert/sweetalert.min.js') }}"></script>
+<script src="{{asset('js/datepicker/date-picker/datepicker.js')}}"></script>
+<script src="{{asset('js/datepicker/date-picker/datepicker.en.js')}}"></script>
 @if (Session::has('tambahData'))
 <script>
     swal({

@@ -335,43 +335,11 @@
 
 <body>
     <div>
-        <div style="-aw-headerfooter-type:header-primary; clear:both">
-            <p style="text-align:center; font-size:14pt"><span
-                    style="height:0pt; text-align:left; display:block; position:absolute; z-index:-65535"><img
-                        src="{{ asset('assets/images/logo-instansi.jpeg') }}" width="94" height="97"
-                        alt=""
-                        style="margin-top:0.4pt; margin-left:-22.9pt; -aw-left-pos:-22.9pt; -aw-rel-hpos:column; -aw-rel-vpos:paragraph; -aw-top-pos:0.4pt; -aw-wrap-type:none; position:absolute" /></span><span>PEMERINTAH
-                    KABUPATEN JEMBER</span></p>
-            <p style="text-align:center; font-size:14pt"><span>DINAS KESEHATAN</span></p>
-            <p class="ListParagraph" style="margin-left:0pt; text-align:center; widows:0; orphans:0; font-size:14pt">
-                <span style="font-weight:bold">UPTD PUSKESMAS SEMBORO</span>
-            </p>
-            <p class="ListParagraph" style="margin-left:0pt; text-align:center; widows:0; orphans:0; font-size:12pt">
-                <span>Jl. Pelita No. 2 Sidomekar Semboro, Jember. Kode Pos 68157 </span>
-            </p>
-            <p class="ListParagraph" style="margin-left:0pt; text-align:center; widows:0; orphans:0; font-size:12pt">
-                <span style="height:0pt; text-align:left; display:block; position:absolute; z-index:-65536"><img
-                        src="{{ asset('assets/images/garis.png') }}" width="775" height="8" alt=""
-                        style="margin-top:14.05pt; margin-left:-26.4pt; -aw-left-pos:-24.8pt; -aw-rel-hpos:column; -aw-rel-vpos:paragraph; -aw-top-pos:14.95pt; -aw-wrap-type:none; position:absolute" /></span><span>Telp
-                    0336442192, Email:</span><span style="color:#4472c4">semboro.puskesmas@gmail.com </span><span
-                    style="color:#4472c4; -aw-import:spaces">&#xa0;</span>
-            </p>
-        </div>
-        <p
-            style='margin:0cm;font-size:13px;font-family:"Times New Roman",serif;margin-right:60.3pt;text-align:justify;line-height:150%;'>
-            <strong><span style="font-size:16px;line-height:150%;">&nbsp;</span></strong></p>
-        <p
+        <p style='margin-top:0cm;margin-right:0cm;margin-bottom:8.0pt;margin-left:0cm;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;'>
+            <strong><span style='font-size:33px;line-height:107%;font-family:"Times New Roman",serif;'>TRACER PUSKESMAS SEMBORO</span></strong></p>
+            <p
             style='margin:0cm;font-size:13px;font-family:"Times New Roman",serif;margin-right:60.3pt;text-align:justify;line-height:150%;'>
             <br></p>
-        <p
-            style='margin:0cm;font-size:13px;font-family:"Times New Roman",serif;margin-right:60.3pt;text-align:justify;line-height:150%;'>
-            <br></p>
-        <p
-            style='margin:0cm;font-size:13px;font-family:"Times New Roman",serif;margin-right:60.3pt;text-align:justify;line-height:150%;'>
-            <br></p>
-        <p
-            style='margin:0cm;font-size:13px;font-family:"Times New Roman",serif;margin-right:60.3pt;text-align:justify;line-height:150%;'>
-            <strong><span style="font-size:16px;line-height:150%;">&nbsp;</span></strong></p>
         <p
             style='margin:0cm;font-size:13px;font-family:"Times New Roman",serif;margin-right:60.3pt;text-align:justify;line-height:115%;'>
             <strong><span style="font-size:16px;line-height:115%;">NO RM &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
@@ -391,16 +359,13 @@
             style='margin:0cm;font-size:13px;font-family:"Times New Roman",serif;margin-right:60.3pt;text-align:justify;line-height:115%;'>
             <strong><span style="font-size:16px;line-height:115%;">POLI TUJUAN &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                     &nbsp; &nbsp; &nbsp; &nbsp; : {{ $poli }}</span></strong></p>
- <p
-            style='margin:0cm;font-size:13px;font-family:"Times New Roman",serif;margin-right:60.3pt;text-align:justify;line-height:150%;'>
-            <strong><span style="font-size:16px;line-height:150%;">&nbsp;</span></strong></p>
         <p
             style='margin:0cm;font-size:13px;font-family:"Times New Roman",serif;margin-right:60.3pt;text-align:justify;line-height:150%;'>
             <br></p>
         <p
             style='margin:0cm;font-size:13px;font-family:"Times New Roman",serif;margin-right:60.3pt;text-align:justify;line-height:150%;'>
             <br></p>
-<img src="data:image/png;base64, {!! base64_encode(QrCode::size(200)->generate("Nama Peminjam : ".$peminjaman->user->nama."\nID Peminjaman: ".$peminjaman->id."")) !!} ">
+<img src="data:image/png;base64, {!! base64_encode(QrCode::size(100)->generate("Nama Peminjam : ".$peminjaman->user->nama."\nID Peminjaman: ".$peminjaman->id."")) !!} ">
         {{-- {!! SimpleSoftwareIO\QrCode\Facades\QrCode::size(200)->generate('Hello World'); !!} --}}
     </div>
 </body>

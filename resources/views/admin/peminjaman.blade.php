@@ -2,13 +2,13 @@
 @section('title', 'Data Peminjaman')
 
 {{-- @section('css')
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendors/datatables.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{asset('assets/css/vendors/date-picker.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/vendors/datatables.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{asset('css/vendors/date-picker.css')}}">
 @endsection --}}
 
 {{-- @section('style')
- <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendors/datatables.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{asset('assets/css/vendors/date-picker.css')}}">
+ <link rel="stylesheet" type="text/css" href="{{ asset('css/vendors/datatables.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{asset('css/vendors/date-picker.css')}}">
 @endsection --}}
 
 @section('breadcrumb-title')
@@ -16,10 +16,10 @@
 @endsection
 
 @section('css')
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendors/datatables.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendors/date-picker.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendors/sweetalert2.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/vendors/select2.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/vendors/datatables.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/vendors/date-picker.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/vendors/sweetalert2.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/vendors/select2.css') }}">
     <link rel="stylesheet" type="text/css" href="http://keith-wood.name/css/jquery.signature.css">
 
 
@@ -46,7 +46,7 @@
             <div class="col-sm-12">
                 <div class="card">
                     <div class="card-header">
-                        <h5>BLM KEPIKIRAN DESKRIPSI</h5>
+                        <h5></h5>
                         {{-- <span>Events assigned to the table can be exceptionally useful for user interaction, however you must be aware that DataTables will add and remove rows from the DOM as they are needed (i.e. when paging only the visible elements are actually available in the DOM). As such, this can lead to the odd hiccup when working with events.</span><span>One of the best ways of dealing with this is through the use of delegated events with jQuery's <code>on</code> method, as shown in this example. This
 					example also uses the DataTables<code class="api" title="DataTables API method">row().data()API</code>               method to retrieve information about the selected row - the row's data so we can show it in the <code>alert</code> message in this case.</span> --}}
                     </div>
@@ -186,15 +186,15 @@
 
 @section('script')
 
-    <script src="{{ asset('assets/js/datatable/datatables/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('assets/js/select2/select2.full.min.js') }}"></script>
-    {{-- <script src="{{asset('assets/js/sweet-alert/sweetalert.min.js')}}"></script> --}}
-    <script src="{{ asset('assets/js/sweet-alert/sweetalert.min.js') }}"></script>
-    <script src="{{ asset('assets/js/datepicker/date-picker/datepicker.js') }}"></script>
-    <script src="{{ asset('assets/js/datepicker/date-picker/datepicker.en.js') }}"></script>
-    <script src="{{ asset('assets/js/select2/select2.full.min.js') }}"></script>
-    {{-- <script src="{{asset('assets/js/sweet-alert/sweetalert.min.js')}}"></script> --}}
-    <script src="{{ asset('assets/js/sweet-alert/sweetalert.min.js') }}"></script>
+    <script src="{{ asset('js/datatable/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('js/select2/select2.full.min.js') }}"></script>
+    {{-- <script src="{{asset('js/sweet-alert/sweetalert.min.js')}}"></script> --}}
+    <script src="{{ asset('js/sweet-alert/sweetalert.min.js') }}"></script>
+    <script src="{{ asset('js/datepicker/date-picker/datepicker.js') }}"></script>
+    <script src="{{ asset('js/datepicker/date-picker/datepicker.en.js') }}"></script>
+    <script src="{{ asset('js/select2/select2.full.min.js') }}"></script>
+    {{-- <script src="{{asset('js/sweet-alert/sweetalert.min.js')}}"></script> --}}
+    <script src="{{ asset('js/sweet-alert/sweetalert.min.js') }}"></script>
 
     @if (Session::has('tambahData'))
         <script>
