@@ -77,5 +77,6 @@
             $(".sidebar-submenu" ).css( "display", "block" );
       }
     </script>
+    @yield('script')
   </body>
 </html>

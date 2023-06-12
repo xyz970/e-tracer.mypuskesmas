@@ -7,11 +7,31 @@
 <!-- scrollbar js-->
 <script src="{{asset('assets/js/scrollbar/simplebar.js')}}"></script>
 <script src="{{asset('assets/js/scrollbar/custom.js')}}"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="http://keith-wood.name/js/jquery.signature.js"></script>
 <!-- Sidebar jquery-->
 <script src="{{asset('assets/js/config.js')}}"></script>
 <!-- Plugins JS start-->
 <script id="menu" src="{{asset('assets/js/sidebar-menu.js')}}"></script>
-@yield('script')
+<script src="https://js.pusher.com/7.2/pusher.min.js"></script>
+<script>
+    Pusher.logToConsole = true;
+
+    var pusher = new Pusher('4d59976c7677002a418a', {
+        cluster: 'ap1'
+    });
+
+    var channel = pusher.subscribe('notifikasi-keterlambatan.'+{{ Auth::user()->id }});
+    channel.bind("App\\Events\\NotifikasiKeterlambatanEvent", function(data) {
+    });
+    channel.bind('pusher:subscription_succeeded', function(data) {});
+
+
+    channel.bind('my-event', function(data) {
+        console.log('id: '+data.id)
+    });
+</script>
+
 
 @if(Route::current()->getName() != 'popover') 
 	<script src="{{asset('assets/js/tooltip-init.js')}}"></script>

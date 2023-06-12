@@ -20,6 +20,18 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendors/date-picker.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendors/sweetalert2.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/vendors/select2.css') }}">
+    <link rel="stylesheet" type="text/css" href="http://keith-wood.name/css/jquery.signature.css">
+    <style>
+        .kbw-signature {
+            width: 58%;
+            height: 400px;
+        }
+
+        #sig canvas {
+            width: 100% !important;
+            height: auto;
+        }
+    </style>
 @endsection
 @section('breadcrumb-items')
     <li class="breadcrumb-item">Data</li>
@@ -102,10 +114,58 @@
                             </div>
                         </div>
                     </div>
+                    <div class="modal fade exportData" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button class="btn-close" type="button" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="text-center" style="padding-bottom: 2rem">
+                                        <h4>Export</h4>
+                                    </div>
+                                    <form method="POST" action="{{ route('peminjaman.export') }}" target="_blank">
+                                        {{ csrf_field() }}
+                                         <div class="mb-3 row">
+                                            <label class="col-sm-3 col-form-label f-w-600" for="">Silahkan membuat
+                                                tandatangan sesuai
+                                                yang diinginkan :</label>
+                                            <div class="col-sm-9">
+                                                <div id="sig1"></div>
+                                                <button id="clear1" class="btn btn-danger btn-sm">Hapus
+                                                    Tandatangan</button>
+                                                <textarea id="signature641" name="signed" style="display:none"></textarea>
+                                            </div>
+
+                                        </div>
+                                        <div class="mb-3 row">
+                                            <label class="col-sm-3 col-form-label f-w-600" for="jk">Nama
+                                                Terang</label>
+                                            <div class="col-sm-9">
+                                                <input class="id form-control" type="text" required="" name="nama_terang"
+                                                    data-bs-original-title="" title="">
+                                            </div>
+                                        </div>
+
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button class="btn btn-secondary" type="button" data-bs-dismiss="modal"
+                                        data-bs-original-title="" title="">Tutup</button>
+                                    <button class="btn btn-primary" data-type="btn-tambahdata" type="submit"
+                                        data-bs-original-title="" title="">Tambah Data</button>
+
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="card-body">
                         <div class="pb-6">
-                            <button class="btn" style="background-color: #FF3333; color:white;" type="button"
-                                data-bs-toggle="modal" data-bs-target=".tambahData">Tambah Data</button>
+                           <button class="btn" style="background-color: #FF3333; color:white;" type="button"
+                                data-bs-toggle="modal" data-bs-target=".exportData">Export Data</button>
                         </div>
                         <div class="table-responsive">
                             <table class="display" id="data-pengembalian">
@@ -156,6 +216,15 @@
     <script>
         $(document).ready(function() {
             loadTable();
+             var sig1 = $('#sig1').signature({
+                syncField: '#signature641',
+                syncFormat: 'PNG'
+            });
+            $('#clear1').click(function(e) {
+                e.preventDefault();
+                sig1.signature('clear');
+                $("#signature641").val('');
+            });
 
         })
         $('.id_rm').select2({

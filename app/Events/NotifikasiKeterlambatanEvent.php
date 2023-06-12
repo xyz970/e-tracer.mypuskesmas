@@ -1,0 +1,42 @@
+<?php
+
+namespace App\Events;
+
+use Illuminate\Broadcasting\Channel;
+use Illuminate\Broadcasting\InteractsWithSockets;
+use Illuminate\Broadcasting\PresenceChannel;
+use Illuminate\Broadcasting\PrivateChannel;
+use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
+use Illuminate\Foundation\Events\Dispatchable;
+use Illuminate\Queue\SerializesModels;
+
+class NotifikasiKeterlambatanEvent implements ShouldBroadcast
+{
+    use Dispatchable, InteractsWithSockets, SerializesModels;
+
+    public $id_peminjaman,$user_id;
+    /**
+     * Create a new event instance.
+     *
+     * @return void
+     */
+    public function __construct($id_peminjaman,$user_id)
+    {
+        $this->id_peminjaman = $id_peminjaman;
+        $this->user_id = $user_id;
+    }
+
+    /**
+     * Get the channels the event should broadcast on.
+     *
+     * @return \Illuminate\Broadcasting\Channel|array
+     */
+    public function broadcastOn()
+    {
+        return new PrivateChannel('notifikasi-keterlambatan.'.$this->user_id);
+    }
+    public function broadcastAs()
+    {
+        return 'my-event';
+    }
+}

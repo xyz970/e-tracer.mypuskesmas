@@ -22,6 +22,10 @@ class Peminjaman extends Model
     {
         return $this->belongsTo(StatusPeminjaman::class,'status_id');
     }
+    public function user()
+    {
+        return $this->belongsTo(User::class,'user_id');
+    }
 
     protected function waktu_peminjaman(): Attribute
     {

@@ -52,6 +52,10 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Role::class,'role_id');
     }
+    public function peminjaman()
+    {
+        return $this->hasOne(Peminjaman::class);
+    }
     protected function password(): Attribute
     {
         return Attribute::make(
