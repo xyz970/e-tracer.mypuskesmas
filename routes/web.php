@@ -40,6 +40,7 @@ Route::group(['prefix' => 'rekam-medik', 'as' => 'rmd.', 'middleware' => ['authC
 });
 Route::group(['prefix' => 'poli', 'as' => 'poli.', 'middleware' => 'authCheck'], function () {
     Route::get('/', [PoliController::class, 'index'])->name('index');
+    Route::post('/insert',[PoliController::class,'store'])->name('store');
 });
 Route::group(['prefix' => 'data-dokter', 'as' => 'dokter.', 'middleware' => ['authCheck', 'checkRole:Kepala Puskesmas']], function () {
     Route::get('/', [DokterController::class, 'index'])->name('index');
@@ -71,10 +72,11 @@ Route::get('tes/notif', function () {
     if (!empty($pengembalian)) {
         $created_at = Carbon::createFromTimeString($pengembalian->created_at)->addDay();
         // dd($pengembalian->user_id);
-        if ($created_at >= Carbon::now()) {
+        if ($created_at <= Carbon::now()) {
             $data = array(
-                'id_peminjaman' => '1-L7WJD27-12345678',
-                'user' => $auth
+                // 'id_peminjaman' => $pengembalian->id,
+                'peminjaman' => $pengembalian,
+                // 'user' => $auth
             );
             $pusher = new Pusher(
                 env('PUSHER_APP_KEY'),

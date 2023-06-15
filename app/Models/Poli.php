@@ -9,6 +9,7 @@ class Poli extends Model
 {
     use HasFactory;
     protected $table = "poli";
+    protected $guarded = [];
     public function rekam_medik()
     {
         return $this->hasOne(RekamMedik::class);

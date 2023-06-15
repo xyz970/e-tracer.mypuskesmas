@@ -40,75 +40,16 @@
                                     <div class="text-center" style="padding-bottom: 2rem">
                                         <h4>Tambah Data</h4>
                                     </div>
-                                    <form method="POST" action="{{route('rmd.store')}}">
+                                    <form method="POST" action="{{route('poli.store')}}">
                                         {{ csrf_field() }}
                                         <div class="mb-3 row">
-                                            <label class="col-sm-3 col-form-label f-w-600" for="id_rm">ID RM</label>
+                                            <label class="col-sm-3 col-form-label f-w-600" for="keterangan">Keterangan</label>
                                             <div class="col-sm-9">
-                                                <input class="id_rm form-control" type="text" required=""
-                                                    name="id_rm" data-bs-original-title="" title="">
+                                                <input class="keterangan form-control" type="text" required=""
+                                                    name="keterangan" data-bs-original-title="" title="">
                                             </div>
                                         </div>
-                                        <div class="mb-3 row">
-                                            <label class="col-sm-3 col-form-label f-w-600" for="nik">NIK</label>
-                                            <div class="col-sm-9">
-                                                <input class="nik form-control" type="text" required="" name="nik"
-                                                    data-bs-original-title="" title="">
-                                            </div>
-                                        </div>
-                                        <div class="mb-3 row">
-                                            <label class="col-sm-3 col-form-label f-w-600" for="nama_pasien">Nama
-                                                Pasien</label>
-                                            <div class="col-sm-9">
-                                                <input class="nama_pasien form-control" type="text" required=""
-                                                    name="nama_pasien" data-bs-original-title="" title="">
-                                            </div>
-                                        </div>
-										<div class="mb-3 row">
-                                            <label class="col-sm-3 col-form-label f-w-600" for="jk">Jenis Kelamin</label>
-                                            <div class="col-sm-9">
-												<select class="jk form-control" name="jk">
-													<option value="L">Laki-Laki</option>
-													<option value="P">Perempuan</option>
-												  </select>
-                                            </div>
-                                        </div>
-										<div class="mb-3 row">
-                                            <label class="col-sm-3 col-form-label f-w-600" for="no_bpjs">No. BPJS</label>
-                                            <div class="col-sm-9">
-                                                <input class="no_bpjs form-control" type="text" name="no_bpjs"
-                                                    data-bs-original-title="" title="">
-                                            </div>
-                                        </div>
-										<div class="mb-3 row">
-                                            <label class="col-sm-3 col-form-label f-w-600" for="alamat">Alamat</label>
-                                            <div class="col-sm-9">
-                                                <input class="alamat form-control" type="text" required="" name="alamat"
-                                                    data-bs-original-title="" title="">
-                                            </div>
-                                        </div>
-										<div class="mb-3 row">
-                                            <label class="col-sm-3 col-form-label f-w-600" for="no_hp">No. HP</label>
-                                            <div class="col-sm-9">
-                                                <input class="no_hp form-control" type="text" required="" name="no_hp"
-                                                    data-bs-original-title="" title="">
-                                            </div>
-                                        </div>
-										<div class="mb-3 row">
-                                            <label class="col-sm-3 col-form-label f-w-600" for="tanggal_lahir">Tanggal Lahir</label>
-                                            <div class="col-sm-9">
-												{{-- <input class="datepicker-here form-control digits" name="date" type="text" id="inputRange" data-range="true" data-multiple-dates-separator=" - " data-language="en" autocomplete="off"> --}}
-                                                <input class="datepicker-here form-control digits" data-date-format="yyyy-mm-dd" data-position="top right" type="text" data-language="en" required="" name="tanggal_lahir"
-                                                    data-bs-original-title="" title="">
-                                            </div>
-                                        </div>
-										<div class="mb-3 row">
-                                            <label class="col-sm-3 col-form-label f-w-600" for="umur">Umur</label>
-                                            <div class="col-sm-9">
-                                                <input class="umur form-control" type="number" required="" name="umur"
-                                                    data-bs-original-title="" title="">
-                                            </div>
-                                        </div>
+                                        
 
                                 </div>
                                 <div class="modal-footer">

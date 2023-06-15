@@ -35,11 +35,23 @@
                         </div>
                         <div class="greeting-user text-center">
                             <div class="profile-vector"><img class="img-fluid"
-                                    src="{{ Auth::user()->jk == 'L' ? asset('images/dashboard/man-welcome.png') : asset('images/dashboard/woman-welcome.png')}}" alt=""></div>
+                                    src="{{ Auth::user()->jk == 'L' ? asset('images/dashboard/man-welcome.png') : asset('images/dashboard/woman-welcome.png') }}"
+                                    alt=""></div>
                             <h4 class="f-w-600"><span id="greeting">Good Morning</span> <span class="right-circle"><i
                                         class="fa fa-check-circle f-14 middle"></i></span></h4>
                             <p>{{ Auth::user()->nama }}</p>
+                               @if($peminjaman)
+                                 <div class="card-body">
+                                    <p class="mb-4">
+                                        Anda belum mengembalikan berkas tracer. di mohon untuk mengembalikan segera.. ID berkas : {{ $peminjaman->id }}
+                                    </p>
+
+                                    <a href="{{ route('pengembalian.index') }}"
+                                        class="btn btn-sm btn-outline-danger">Cek Sekarang</a>
+                                </div>
+                               @endif
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -80,13 +92,13 @@
                                         </div>
                                     </div>
                                 </div>
-                               
+
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-           
+
             <div class="col-xl-4 col-lg-12 xl-50 calendar-sec box-col-6">
                 <div class="card gradient-primary o-hidden">
                     <div class="card-body">
@@ -106,6 +118,7 @@
             </div>
         </div>
     </div>
+
     <script type="text/javascript">
         var session_layout = '{{ session()->get('layout') }}';
     </script>
@@ -134,10 +147,10 @@
             series: [{
                 name: 'Keterlambatan',
                 data: [
-                    @for($i = 0; $i < count($arrayChart); $i++)
-                      "{{ $pengembalian[$i]['keterlambatan'] }}",
+                    @for ($i = 0; $i < count($arrayChart); $i++)
+                        "{{ $pengembalian[$i]['keterlambatan'] }}",
                     @endfor
-                    ]
+                ]
             }],
             chart: {
                 type: 'bar',
@@ -159,9 +172,11 @@
                 colors: ['transparent']
             },
             xaxis: {
-                categories: [  @for($i = 0; $i < count($arrayChart); $i++)
-                        "{{ \Carbon\Carbon::parse($pengembalian[$i]['monthname'])->translatedFormat('F')   }}",
-                    @endfor],
+                categories: [
+                    @for ($i = 0; $i < count($arrayChart); $i++)
+                        "{{ \Carbon\Carbon::parse($pengembalian[$i]['monthname'])->translatedFormat('F') }}",
+                    @endfor
+                ],
             },
             yaxis: {
                 title: {
@@ -175,7 +190,7 @@
             tooltip: {
                 y: {
                     formatter: function(val) {
-                        return  val + " x (kali)"
+                        return val + " x (kali)"
                     }
                 }
             }

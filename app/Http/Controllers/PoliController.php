@@ -48,7 +48,8 @@ class PoliController extends Controller
      */
     public function store(StorePoliRequest $request)
     {
-        //
+        Poli::create($request->validated());
+        return redirect()->back()->with('tambahData','true');
     }
 
     /**
