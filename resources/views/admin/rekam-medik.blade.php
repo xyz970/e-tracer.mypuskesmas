@@ -3,7 +3,7 @@
 
 @section('css')
     <link rel="stylesheet" type="text/css" href="{{ asset('css/vendors/datatables.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{asset('css/vendors/date-picker.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/vendors/date-picker.css') }}">
 @endsection
 
 @section('style')
@@ -40,7 +40,7 @@
                                     <div class="text-center" style="padding-bottom: 2rem">
                                         <h4>Tambah Data</h4>
                                     </div>
-                                    <form method="POST" action="{{route('rmd.store')}}">
+                                    <form method="POST" action="{{ route('rmd.store') }}">
                                         {{ csrf_field() }}
                                         <div class="mb-3 row">
                                             <label class="col-sm-3 col-form-label f-w-600" for="id_rm">ID RM</label>
@@ -64,49 +64,67 @@
                                                     name="nama_pasien" data-bs-original-title="" title="">
                                             </div>
                                         </div>
-										<div class="mb-3 row">
-                                            <label class="col-sm-3 col-form-label f-w-600" for="jk">Jenis Kelamin</label>
+                                        <div class="mb-3 row">
+                                            <label class="col-sm-3 col-form-label f-w-600" for="jk">Jenis
+                                                Kelamin</label>
                                             <div class="col-sm-9">
-												<select class="jk form-control" name="jk">
-													<option value="L">Laki-Laki</option>
-													<option value="P">Perempuan</option>
-												  </select>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="jk" value="L"
+                                                        id="jk1">
+                                                    <label class="form-check-label" for="jk1">
+                                                        Laki - Laki
+                                                    </label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="jk" value="P"
+                                                        id="jk2" checked>
+                                                    <label class="form-check-label" for="jk2">
+                                                        Perempuan
+                                                    </label>
+                                                </div>
+                                                {{-- <select class="jk form-control" name="jk">
+                                                    <option value="L">Laki-Laki</option>
+                                                    <option value="P">Perempuan</option>
+                                                </select> --}}
                                             </div>
                                         </div>
-										<div class="mb-3 row">
+                                        <div class="mb-3 row">
                                             <label class="col-sm-3 col-form-label f-w-600" for="no_bpjs">No. BPJS</label>
                                             <div class="col-sm-9">
                                                 <input class="no_bpjs form-control" type="text" name="no_bpjs"
                                                     data-bs-original-title="" title="">
                                             </div>
                                         </div>
-										<div class="mb-3 row">
+                                        <div class="mb-3 row">
                                             <label class="col-sm-3 col-form-label f-w-600" for="alamat">Alamat</label>
                                             <div class="col-sm-9">
-                                                <input class="alamat form-control" type="text" required="" name="alamat"
-                                                    data-bs-original-title="" title="">
+                                                <input class="alamat form-control" type="text" required=""
+                                                    name="alamat" data-bs-original-title="" title="">
                                             </div>
                                         </div>
-										<div class="mb-3 row">
+                                        <div class="mb-3 row">
                                             <label class="col-sm-3 col-form-label f-w-600" for="no_hp">No. HP</label>
                                             <div class="col-sm-9">
-                                                <input class="no_hp form-control" type="text" required="" name="no_hp"
-                                                    data-bs-original-title="" title="">
+                                                <input class="no_hp form-control" type="text" required=""
+                                                    name="no_hp" data-bs-original-title="" title="">
                                             </div>
                                         </div>
-										<div class="mb-3 row">
-                                            <label class="col-sm-3 col-form-label f-w-600" for="tanggal_lahir">Tanggal Lahir</label>
+                                        <div class="mb-3 row">
+                                            <label class="col-sm-3 col-form-label f-w-600" for="tanggal_lahir">Tanggal
+                                                Lahir</label>
                                             <div class="col-sm-9">
-												{{-- <input class="datepicker-here form-control digits" name="date" type="text" id="inputRange" data-range="true" data-multiple-dates-separator=" - " data-language="en" autocomplete="off"> --}}
-                                                <input class="datepicker-here form-control digits" data-date-format="yyyy-mm-dd" data-position="top right" type="text" data-language="en" required="" name="tanggal_lahir"
-                                                    data-bs-original-title="" title="">
+                                                {{-- <input class="datepicker-here form-control digits" name="date" type="text" id="inputRange" data-range="true" data-multiple-dates-separator=" - " data-language="en" autocomplete="off"> --}}
+                                                <input class="datepicker-here form-control digits"
+                                                    data-date-format="yyyy-mm-dd" data-position="top right"
+                                                    type="text" data-language="en" required=""
+                                                    name="tanggal_lahir" data-bs-original-title="" title="">
                                             </div>
                                         </div>
-										<div class="mb-3 row">
+                                        <div class="mb-3 row">
                                             <label class="col-sm-3 col-form-label f-w-600" for="umur">Umur</label>
                                             <div class="col-sm-9">
-                                                <input class="umur form-control" type="number" required="" name="umur"
-                                                    data-bs-original-title="" title="">
+                                                <input class="umur form-control" type="number" required=""
+                                                    name="umur" data-bs-original-title="" title="">
                                             </div>
                                         </div>
 
@@ -131,18 +149,16 @@
                             <table class="display" id="data-rmd">
                                 <thead>
                                     <tr>
-                                        <th>ID</th>
+                                        <th>ID RM</th>
                                         <th>NIK</th>
                                         <th>Nama Pasien</th>
                                         <th>Jenis Kelamin</th>
-                                        <th>No.BPJS</th>
                                         <th>Alamat</th>
                                         <th>No HP</th>
                                         <th>Tanggal Lahir</th>
                                         <th>Umur</th>
                                         <th>Poli Tujuan</th>
                                         <th>Tanggal Berobat</th>
-                                        <th>Status</th>
                                     </tr>
                                 </thead>
                                 <tbody></tbody>
@@ -161,17 +177,17 @@
     <script src="{{ asset('js/select2/select2.full.min.js') }}"></script>
     {{-- <script src="{{asset('js/sweet-alert/sweetalert.min.js')}}"></script> --}}
     <script src="{{ asset('js/sweet-alert/sweetalert.min.js') }}"></script>
-<script src="{{asset('js/datepicker/date-picker/datepicker.js')}}"></script>
-<script src="{{asset('js/datepicker/date-picker/datepicker.en.js')}}"></script>
-@if (Session::has('tambahData'))
-<script>
-    swal({
-        title: "Berhasil",
-        text: "Data berhasil ditambahkan",
-        icon: "success",
-    })
-</script>
-@endif
+    <script src="{{ asset('js/datepicker/date-picker/datepicker.js') }}"></script>
+    <script src="{{ asset('js/datepicker/date-picker/datepicker.en.js') }}"></script>
+    @if (Session::has('tambahData'))
+        <script>
+            swal({
+                title: "Berhasil",
+                text: "Data berhasil ditambahkan",
+                icon: "success",
+            })
+        </script>
+    @endif
     <script>
         $(document).ready(function() {
             loadTable();
@@ -203,10 +219,6 @@
                         name: 'jk'
                     },
                     {
-                        data: 'no_bpjs',
-                        name: 'no_bpjs'
-                    },
-                    {
                         data: 'alamat',
                         name: 'alamat'
                     },
@@ -223,17 +235,14 @@
                         name: 'umur'
                     },
                     {
-                        data: 'tipe_perawatan.keterangan',
-                        name: 'tipe_perawatan.keterangan'
+                        data: 'poli.keterangan',
+                        name: 'poli.keterangan'
                     },
                     {
                         data: 'tanggal_berobat',
                         name: 'tanggal_berobat'
                     },
-                    {
-                        data: 'poli.keterangan',
-                        name: 'poli.keterangan'
-                    },
+
 
                     // {
                     //     data: 'action',
