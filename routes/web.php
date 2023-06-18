@@ -63,6 +63,10 @@ Route::group(['prefix' => 'pengembalian', 'as' => 'pengembalian.', 'middleware' 
     Route::get('verifikasi/{id}', [PengembalianController::class, 'verifikasi_pengembalian'])->name('verifikasi_pengembalian');
 });
 Route::get('dashboard', [AuthController::class, 'dashboard'])->name('dashboard')->middleware(AuthCheck::class);
+Route::group(['as'=>'update_akun.','prefix'=>'akun'],function(){
+    Route::get('/',[AuthController::class, 'update_akun'])->name('index');
+    Route::post('/update',[AuthController::class, 'simpan_akun'])->name('simpan_akun');
+});
 Route::get('/test', [DokterController::class, 'test']);
 
 Route::get('tes/notif', function () {

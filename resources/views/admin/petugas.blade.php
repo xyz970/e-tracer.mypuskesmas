@@ -80,14 +80,29 @@
 											  </select>
 										</div>
 									</div>
+									
 									<div class="mb-3 row">
 										<label class="col-sm-3 col-form-label f-w-600" for="jk">Jenis Kelamin</label>
-										<div class="col-sm-9">
-											<select class="jk form-control" name="jk">
-												<option value="L">Laki-Laki</option>
-												<option value="P">Perempuan</option>
-											  </select>
-										</div>
+										 <div class="col-sm-9">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="jk"
+                                                        value="L" id="jk1">
+                                                    <label class="form-check-label" for="jk1">
+                                                        Laki - Laki
+                                                    </label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="jk"
+                                                        value="P" id="jk2" checked>
+                                                    <label class="form-check-label" for="jk2">
+                                                        Perempuan
+                                                    </label>
+                                                </div>
+                                                {{-- <select class="jk form-control" name="jk">
+                                                    <option value="L">Laki-Laki</option>
+                                                    <option value="P">Perempuan</option>
+                                                </select> --}}
+                                            </div>
 									</div>
 									
 									

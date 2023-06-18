@@ -69,15 +69,15 @@
                                                 Kelamin</label>
                                             <div class="col-sm-9">
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="jk" value="L"
-                                                        id="jk1">
+                                                    <input class="form-check-input" type="radio" name="jk"
+                                                        value="L" id="jk1">
                                                     <label class="form-check-label" for="jk1">
                                                         Laki - Laki
                                                     </label>
                                                 </div>
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="jk" value="P"
-                                                        id="jk2" checked>
+                                                    <input class="form-check-input" type="radio" name="jk"
+                                                        value="P" id="jk2" checked>
                                                     <label class="form-check-label" for="jk2">
                                                         Perempuan
                                                     </label>

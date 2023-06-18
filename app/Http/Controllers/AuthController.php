@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Helper\PusherNotificationHelper;
 use App\Jobs\SendEmail;
 use App\Models\Peminjaman;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -104,4 +105,18 @@ class AuthController extends Controller
         // dd($pengembalian);
         return view('admin.dashboard', compact('arrayChart', 'arrayMonth', 'pengembalian','peminjaman'));
     }
+
+    public function update_akun() {
+        $user = Auth::user();
+        return view('admin.update-akun',compact('user'));
+    }
+
+    public function simpan_akun(Request $request) {
+        $auth = Auth::user();
+        $user = User::find($auth->id);
+        $user->password = $request->input('password');
+        $user->update();
+        return redirect()->route('login');
+    }
 }
+
