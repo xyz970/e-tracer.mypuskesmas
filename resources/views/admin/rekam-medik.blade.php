@@ -43,7 +43,7 @@
                                     <form method="POST" action="{{ route('rmd.store') }}">
                                         {{ csrf_field() }}
                                         <div class="mb-3 row">
-                                            <label class="col-sm-3 col-form-label f-w-600" for="id_rm">ID RM</label>
+                                            <label class="col-sm-3 col-form-label f-w-600" for="id_rm">No RM</label>
                                             <div class="col-sm-9">
                                                 <input class="id form-control" type="text" required=""
                                                     name="id" data-bs-original-title="" title="">
