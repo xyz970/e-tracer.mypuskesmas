@@ -9,6 +9,7 @@ class RekamMedik extends Model
 {
     use HasFactory;
     protected $table = "rekam_medik";
+    protected $guarded = [];
 
     public function tipe_perawatan()
     {

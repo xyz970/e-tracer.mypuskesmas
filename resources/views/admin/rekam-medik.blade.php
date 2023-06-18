@@ -149,7 +149,7 @@
                             <table class="display" id="data-rmd">
                                 <thead>
                                     <tr>
-                                        <th>ID RM</th>
+                                        <th>NO RM</th>
                                         <th>NIK</th>
                                         <th>Nama Pasien</th>
                                         <th>Jenis Kelamin</th>
