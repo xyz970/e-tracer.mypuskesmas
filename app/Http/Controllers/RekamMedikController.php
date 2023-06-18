@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreRekamMedikRequest;
 use App\Http\Requests\UpdateRekamMedikRequest;
+use App\Models\Poli;
 use App\Models\RekamMedik;
+use App\Models\TipePerawatan;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -17,6 +19,8 @@ class RekamMedikController extends Controller
      */
     public function index(Request $request)
     {
+        $poli = Poli::all();
+        $perawatan = TipePerawatan::all();
         if ($request->ajax()) {
             $rmd = RekamMedik::with(['tipe_perawatan', 'poli'])->get();
             return DataTables::of($rmd)->addIndexColumn()
@@ -44,7 +48,7 @@ class RekamMedikController extends Controller
                 ->rawColumns(['action'])
                 ->make(true);
         } else {
-            return view('admin.rekam-medik');
+            return view('admin.rekam-medik',compact('poli','perawatan'));
         }
     }
 
@@ -77,7 +81,6 @@ class RekamMedikController extends Controller
             'tanggal_lahir',
             'umur',
             'poli_id',
-            'tanggal_berobat',
             'tipe_perawatan_id'
         ]);
         RekamMedik::create($input);

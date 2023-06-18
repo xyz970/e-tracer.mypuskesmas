@@ -45,8 +45,8 @@
                                         <div class="mb-3 row">
                                             <label class="col-sm-3 col-form-label f-w-600" for="id_rm">ID RM</label>
                                             <div class="col-sm-9">
-                                                <input class="id_rm form-control" type="text" required=""
-                                                    name="id_rm" data-bs-original-title="" title="">
+                                                <input class="id form-control" type="text" required=""
+                                                    name="id" data-bs-original-title="" title="">
                                             </div>
                                         </div>
                                         <div class="mb-3 row">
@@ -62,6 +62,26 @@
                                             <div class="col-sm-9">
                                                 <input class="nama_pasien form-control" type="text" required=""
                                                     name="nama_pasien" data-bs-original-title="" title="">
+                                            </div>
+                                        </div>
+                                        <div class="mb-3 row">
+                                            <label class="col-sm-3 col-form-label f-w-600" for="poli_id">Poli</label>
+                                            <div class="col-sm-9">
+												<select class="poli_id form-control" name="poli_id">
+                                                    @foreach ($poli as $item)
+													<option value="{{$item->id}}">{{$item->keterangan}}</option>
+                                                    @endforeach
+												  </select>
+                                            </div>
+                                        </div>
+                                        <div class="mb-3 row">
+                                            <label class="col-sm-3 col-form-label f-w-600" for="tipe_perawatan_id">Perawatan</label>
+                                            <div class="col-sm-9">
+												<select class="tipe_perawatan_id form-control" name="tipe_perawatan_id">
+                                                    @foreach ($perawatan as $item)
+													<option value="{{$item->id}}">{{$item->keterangan}}</option>
+                                                    @endforeach
+												  </select>
                                             </div>
                                         </div>
                                         <div class="mb-3 row">
@@ -158,7 +178,6 @@
                                         <th>Tanggal Lahir</th>
                                         <th>Umur</th>
                                         <th>Poli Tujuan</th>
-                                        <th>Tanggal Berobat</th>
                                     </tr>
                                 </thead>
                                 <tbody></tbody>
@@ -238,12 +257,6 @@
                         data: 'poli.keterangan',
                         name: 'poli.keterangan'
                     },
-                    {
-                        data: 'tanggal_berobat',
-                        name: 'tanggal_berobat'
-                    },
-
-
                     // {
                     //     data: 'action',
                     //     name: 'action',
