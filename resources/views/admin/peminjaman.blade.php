@@ -294,7 +294,7 @@
                     {
                         data: 'verifikasi_peminjaman_btn',
                         name: 'verifikasi_peminjaman_btn',
-                        visible: {{ Auth::user()->role_id == '2' ? 'true' : 'false' }},
+                        visible: {{ Auth::user()->role_id == '3' ? 'true' : 'false' }},
                     },
 
                     // {

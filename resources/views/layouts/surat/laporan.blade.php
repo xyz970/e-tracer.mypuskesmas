@@ -459,7 +459,7 @@
         <p style="margin-right:60.3pt; line-height:13pt"><span style="font-size:12pt; letter-spacing:-0.1pt">Nama
                 Petugas RM </span><span
                 style="width:14.34pt; font-size:12pt; letter-spacing:-0.1pt; display:inline-block">&#xa0;</span><span
-                style="font-size:12pt; letter-spacing:-0.1pt">: Nur Faiza Hardiyanti</span></p>
+                style="font-size:12pt; letter-spacing:-0.1pt">: {{ Auth::user()->nama }}</span></p>
         <p style="margin-right:60.3pt; line-height:13pt"><span
                 style="font-size:12pt; letter-spacing:-0.1pt; -aw-import:ignore">&#xa0;</span></p>
         <table cellspacing="0" cellpadding="0" class="TableGrid"
