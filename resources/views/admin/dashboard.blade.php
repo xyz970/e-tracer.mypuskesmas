@@ -132,8 +132,8 @@
     <script src="{{ asset('js/chart/apex-chart/apex-chart.js') }}"></script>
     <script src="{{ asset('js/chart/apex-chart/stock-prices.js') }}"></script>
     <script src="{{ asset('js/notify/bootstrap-notify.min.js') }}"></script>
-    <script src="{{ asset('js/dashboard/default.js') }}"></script>
-    <script src="{{ asset('js/notify/index.js') }}"></script>
+    {{-- <script src="{{ asset('js/dashboard/default.js') }}"></script> --}}
+    {{-- <script src="{{ asset('js/notify/index.js') }}"></script> --}}
     <script src="{{ asset('js/datepicker/date-picker/datepicker.js') }}"></script>
     <script src="{{ asset('js/datepicker/date-picker/datepicker.en.js') }}"></script>
     <script src="{{ asset('js/datepicker/date-picker/datepicker.custom.js') }}"></script>

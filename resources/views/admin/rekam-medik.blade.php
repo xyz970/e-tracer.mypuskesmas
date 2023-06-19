@@ -23,11 +23,7 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="card">
-                    <div class="card-header">
-                        <h5></h5>
-                        {{-- <span>Events assigned to the table can be exceptionally useful for user interaction, however you must be aware that DataTables will add and remove rows from the DOM as they are needed (i.e. when paging only the visible elements are actually available in the DOM). As such, this can lead to the odd hiccup when working with events.</span><span>One of the best ways of dealing with this is through the use of delegated events with jQuery's <code>on</code> method, as shown in this example. This
-					example also uses the DataTables<code class="api" title="DataTables API method">row().data()API</code>               method to retrieve information about the selected row - the row's data so we can show it in the <code>alert</code> message in this case.</span> --}}
-                    </div>
+                   
                     <div class="modal fade tambahData" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
                         aria-hidden="true">
                         <div class="modal-dialog modal-lg">
@@ -109,13 +105,6 @@
                                             </div>
                                         </div>
                                         <div class="mb-3 row">
-                                            <label class="col-sm-3 col-form-label f-w-600" for="no_bpjs">No. BPJS</label>
-                                            <div class="col-sm-9">
-                                                <input class="no_bpjs form-control" type="text" name="no_bpjs"
-                                                    data-bs-original-title="" title="">
-                                            </div>
-                                        </div>
-                                        <div class="mb-3 row">
                                             <label class="col-sm-3 col-form-label f-w-600" for="alamat">Alamat</label>
                                             <div class="col-sm-9">
                                                 <input class="alamat form-control" type="text" required=""
@@ -138,13 +127,6 @@
                                                     data-date-format="yyyy-mm-dd" data-position="top right"
                                                     type="text" data-language="en" required=""
                                                     name="tanggal_lahir" data-bs-original-title="" title="">
-                                            </div>
-                                        </div>
-                                        <div class="mb-3 row">
-                                            <label class="col-sm-3 col-form-label f-w-600" for="umur">Umur</label>
-                                            <div class="col-sm-9">
-                                                <input class="umur form-control" type="number" required=""
-                                                    name="umur" data-bs-original-title="" title="">
                                             </div>
                                         </div>
 
@@ -176,7 +158,6 @@
                                         <th>Alamat</th>
                                         <th>No HP</th>
                                         <th>Tanggal Lahir</th>
-                                        <th>Umur</th>
                                         <th>Poli Tujuan</th>
                                     </tr>
                                 </thead>
@@ -248,10 +229,6 @@
                     {
                         data: 'tanggal_lahir',
                         name: 'tanggal_lahir'
-                    },
-                    {
-                        data: 'umur',
-                        name: 'umur'
                     },
                     {
                         data: 'poli.keterangan',

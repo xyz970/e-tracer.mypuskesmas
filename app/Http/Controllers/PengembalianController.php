@@ -24,12 +24,7 @@ class PengembalianController extends Controller
                 return '<button onclick="update('.$item->id.')" class="btn btn-icon me-2 btn-primary"><span class="tf-icons fa fa-info"></span></button>';
             })
             ->addColumn('verifikasi',function($item){
-                if ($item->verifikasi_peminjaman == 'true') {
                     return '<a href="'.route('pengembalian.verifikasi_pengembalian',['id'=>$item->id]).'" class="btn btn-primary">Verifikasi</a>';
-                } else {
-                    return '-';
-                }
-              
             })
             ->addIndexColumn()
             ->rawColumns(['verifikasi','status_keterlambatan'])

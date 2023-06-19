@@ -22,6 +22,7 @@
 				<li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav {{ Route::currentRouteName() == 'peminjaman.index' ? 'nav-selected' : ''}}" href="{{route('peminjaman.index')}}"><i class="fa fa-archive fa-lg icon"> </i> &nbsp;&nbsp;<span class="link-content">Data Peminjaman</span></a></li>
 				<li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav {{ Route::currentRouteName() == 'pengembalian.index' ? 'nav-selected' : ''}}" href="{{route('pengembalian.index')}}"><i class="fa fa-exchange fa-lg icon"> </i> &nbsp;&nbsp;<span class="link-content">Data Pengembalian</span></a></li>
 				<li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav {{ Route::currentRouteName() == 'petugas.index' ? 'nav-selected' : ''}}" href="{{route('petugas.index')}}"><i class="fa fa-users fa-lg icon"> </i> &nbsp;&nbsp;<span class="link-content">Data Petugas</span></a></li>
+				<li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav {{ Route::currentRouteName() == 'laporan.index' ? 'nav-selected' : ''}}" href="{{route('laporan.index')}}"><i class="fa-solid fa-file-export fa-lg icon"></i></i> &nbsp;&nbsp;<span class="link-content">Laporan</span></a></li>
 				</ul>
 			</div>
 			<div class="right-arrow" id="right-arrow"><i data-feather="arrow-right"></i></div>

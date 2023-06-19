@@ -454,7 +454,7 @@
         <p style="font-size:12pt"><span style="letter-spacing:-0.1pt; -aw-import:ignore">&#xa0;</span></p>
         <p style="font-size:12pt"><span style="letter-spacing:-0.1pt">Tanggal Pelaporan </span><span
                 style="width:14.7pt; letter-spacing:-0.1pt; display:inline-block">&#xa0;</span><span
-                style="letter-spacing:-0.1pt">: 20 Juni 2022</span></p>
+                style="letter-spacing:-0.1pt">: {{ \Carbon\Carbon::now()->translatedFormat('d F Y')  }}</span></p>
         <p><span style="-aw-import:ignore">&#xa0;</span></p>
         <p style="margin-right:60.3pt; line-height:13pt"><span style="font-size:12pt; letter-spacing:-0.1pt">Nama
                 Petugas RM </span><span
@@ -559,9 +559,6 @@
                 style="font-size:12pt; font-weight:bold; letter-spacing:-0.1pt; -aw-import:ignore">&#xa0;</span></p>
         <p style="margin-left:290.6pt; line-height:13pt"><span style="font-size:12pt; letter-spacing:-0.1pt">Jember ,
                 {{ $tanggal }}</span></p>
-        <div style="align-items: end; padding-left: 60%;">
-            <img src="{{ $file }}" alt="" srcset="">
-        </div>
         <p style="margin-left:290.6pt; line-height:13pt"><span
                 style="font-size:12pt; letter-spacing:-0.1pt; -aw-import:ignore">&#xa0;</span></p>
         <p style="margin-left:311.85pt; text-indent:-7.05pt; line-height:13pt"><span

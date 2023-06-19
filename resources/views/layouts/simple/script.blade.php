@@ -12,6 +12,7 @@
 <!-- Sidebar jquery-->
 <script src="{{ asset('js/config.js') }}"></script>
 <!-- Plugins JS start-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" integrity="sha512-fD9DI5bZwQxOi7MhYWnnNPlvXdp/2Pj3XSTRrFs5FQa4mizyGLnJcN6tuvUS6LbmgN1ut+XGSABKvjN0H6Aoow==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script id="menu" src="{{ asset('js/sidebar-menu.js') }}"></script>
 <script src="https://js.pusher.com/7.2/pusher.min.js"></script>
 <script>

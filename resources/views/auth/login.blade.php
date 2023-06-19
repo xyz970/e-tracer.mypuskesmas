@@ -60,7 +60,7 @@
             </div>
             <div class="col-lg-7 d-none d-lg-block">
                 <div id="auth-right" >
-                    {{-- <img src="{{ asset('images/gambar_puskesmas.jpg') }}"> --}}
+                    <img src="{{ asset('images/gambar_puskesmasCrop.jpg') }}">
                 </div>
             </div>
         </div>

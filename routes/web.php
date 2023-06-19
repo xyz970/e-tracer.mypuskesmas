@@ -3,6 +3,7 @@
 use App\Helper\ExportWord;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DokterController;
+use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\PeminjamanController;
 use App\Http\Controllers\PengembalianController;
 use App\Http\Controllers\PetugasController;
@@ -61,6 +62,10 @@ Route::group(['prefix' => 'pengembalian', 'as' => 'pengembalian.', 'middleware' 
     Route::get('/', [PengembalianController::class, 'index'])->name('index');
     Route::post('/store', [PengembalianController::class, 'store'])->name('store');
     Route::get('verifikasi/{id}', [PengembalianController::class, 'verifikasi_pengembalian'])->name('verifikasi_pengembalian');
+});
+Route::group(['prefix' => 'laporan', 'as' => 'laporan.', 'middleware' => ['authCheck']], function () {
+    Route::get('/', [LaporanController::class, 'index'])->name('index');
+    Route::post('/export', [LaporanController::class, 'export'])->name('export');
 });
 Route::get('dashboard', [AuthController::class, 'dashboard'])->name('dashboard')->middleware(AuthCheck::class);
 Route::group(['as'=>'update_akun.','prefix'=>'akun'],function(){

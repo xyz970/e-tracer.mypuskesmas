@@ -45,11 +45,7 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="card">
-                    <div class="card-header">
-                        <h5></h5>
-                        {{-- <span>Events assigned to the table can be exceptionally useful for user interaction, however you must be aware that DataTables will add and remove rows from the DOM as they are needed (i.e. when paging only the visible elements are actually available in the DOM). As such, this can lead to the odd hiccup when working with events.</span><span>One of the best ways of dealing with this is through the use of delegated events with jQuery's <code>on</code> method, as shown in this example. This
-					example also uses the DataTables<code class="api" title="DataTables API method">row().data()API</code>               method to retrieve information about the selected row - the row's data so we can show it in the <code>alert</code> message in this case.</span> --}}
-                    </div>
+
                     <div class="modal fade tambahData" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
                         aria-hidden="true">
                         <div class="modal-dialog modal-lg">
@@ -64,7 +60,7 @@
                                     </div>
                                     <form method="POST" action="{{ route('peminjaman.store') }}" target="_blank">
                                         {{ csrf_field() }}
-                                       
+
                                         {{-- <div class="mb-3 row">
                                             <label class="col-sm-3 col-form-label f-w-600" for="nama">Nama</label>
                                             <div class="col-sm-9">
@@ -87,7 +83,7 @@
                                                 <textarea class="form-control" name="keterangan" rows="3"></textarea>
                                             </div>
                                         </div>
-                                      
+
 
 
                                 </div>
@@ -116,7 +112,7 @@
                                     </div>
                                     <form method="POST" action="{{ route('peminjaman.export') }}" target="_blank">
                                         {{ csrf_field() }}
-                                         <div class="mb-3 row">
+                                        <div class="mb-3 row">
                                             <label class="col-sm-3 col-form-label f-w-600" for="">Silahkan membuat
                                                 tandatangan sesuai
                                                 yang diinginkan :</label>
@@ -132,8 +128,8 @@
                                             <label class="col-sm-3 col-form-label f-w-600" for="jk">Nama
                                                 Terang</label>
                                             <div class="col-sm-9">
-                                                <input class="id form-control" type="text" required="" name="nama_terang"
-                                                    data-bs-original-title="" title="">
+                                                <input class="id form-control" type="text" required=""
+                                                    name="nama_terang" data-bs-original-title="" title="">
                                             </div>
                                         </div>
 
@@ -151,13 +147,14 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <div class="pb-6">
-                       
-                                
-                         <button class="btn" style="background-color: #FF3333; color:white;" type="button"
-                                data-bs-toggle="modal" data-bs-target=".tambahData">Tambah Data</button>
-                           
-                        </div>
+                        @if (Auth::user()->role_id == 2)
+                            <div class="pb-6">
+                                <button class="btn" style="background-color: #FF3333; color:white;" type="button"
+                                    data-bs-toggle="modal" data-bs-target=".tambahData">Tambah Data</button>
+                            </div>
+                        @endif
+
+
 
                         <div class="table-responsive">
                             <table class="display" id="data-peminjaman">
@@ -171,7 +168,6 @@
                                         <th>Status</th>
                                         <th>Poli</th>
                                         <th>Keterangan</th>
-                                        <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody></tbody>
@@ -218,7 +214,7 @@
                 $("#signature64").val('');
             });
 
-           
+
         })
         $('.id_rm').select2({
 
@@ -285,16 +281,11 @@
                         data: 'rekam_medik.poli.keterangan',
                         name: 'rekam_medik.poli.keterangan',
                         // visible: false
-                    }, 
+                    },
                     {
                         data: 'keterangan',
                         name: 'keterangan',
                         // visible: false
-                    },
-                    {
-                        data: 'verifikasi_peminjaman_btn',
-                        name: 'verifikasi_peminjaman_btn',
-                        visible: {{ Auth::user()->role_id == '3' ? 'true' : 'false' }},
                     },
 
                     // {

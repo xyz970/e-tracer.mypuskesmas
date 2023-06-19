@@ -1,5 +1,5 @@
 @extends('layouts.simple.master')
-@section('title', 'Data Pengembalian')
+@section('title', 'Data Peminjaman')
 
 {{-- @section('css')
     <link rel="stylesheet" type="text/css" href="{{ asset('css/vendors/datatables.css') }}">
@@ -12,7 +12,7 @@
 @endsection --}}
 
 @section('breadcrumb-title')
-    <h3>Data Pengembalian</h3>
+    <h3>Data Peminjaman</h3>
 @endsection
 
 @section('css')
@@ -21,6 +21,8 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/vendors/sweetalert2.css') }}">
     <link rel="stylesheet" href="{{ asset('css/vendors/select2.css') }}">
     <link rel="stylesheet" type="text/css" href="http://keith-wood.name/css/jquery.signature.css">
+
+
     <style>
         .kbw-signature {
             width: 58%;
@@ -35,7 +37,7 @@
 @endsection
 @section('breadcrumb-items')
     <li class="breadcrumb-item">Data</li>
-    <li class="breadcrumb-item active">Data Pengembalian</li>
+    <li class="breadcrumb-item active">Data Peminjaman</li>
 @endsection
 
 @section('content')
@@ -43,23 +45,42 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="card">
-                  
                     <div class="card-body">
-                       
+
+                        @if (Auth::user()->role_id != 2)
+                            <div class="mb-3 row g-3">
+                                <form action="{{ route('laporan.export') }}" method="POST">
+                                    {{ csrf_field() }}
+                                    <label class="col-sm-3 col-form-label">Export Data</label>
+                                    <div class="col-xl-5 col-sm-9">
+                                        <input class="datepicker-here form-control digits"
+                                           name="date"
+                                            type="text" id="inputRange" data-range="true"
+                                            data-multiple-dates-separator=" - " data-language="en" autocomplete="off">
+
+                                    </div>
+                            </div>
+                            <div class="mb-3">
+                                <div class="col">
+                                    <button class="btn" style="background-color: #FF3333; color:white;" data-bs-toggle="tooltip"
+                                        data-bs-placement="bottom" title
+                                        data-bs-original-title="Export data peminjaman sesuai dengan tanggal">Export</button>
+
+                                </div>
+                                </form>
+                            </div>
+                        @endif
                         <div class="table-responsive">
-                            <table class="display" id="data-pengembalian">
+                            <table class="display" id="data-peminjaman">
                                 <thead>
                                     <tr>
                                         <th>ID</th>
                                         <th>Nama Pasien</th>
                                         <th>Jenis Kelamin</th>
+                                        <th>Status Keterlambatan</th>
                                         <th>Status</th>
                                         <th>Poli</th>
                                         <th>Keterangan</th>
-                                        <th>Waktu Peminjaman</th>
-                                        <th>Waktu Pengembalian</th>
-                                        <th>Aksi</th>
-                                        
                                     </tr>
                                 </thead>
                                 <tbody></tbody>
@@ -83,6 +104,7 @@
     <script src="{{ asset('js/select2/select2.full.min.js') }}"></script>
     {{-- <script src="{{asset('js/sweet-alert/sweetalert.min.js')}}"></script> --}}
     <script src="{{ asset('js/sweet-alert/sweetalert.min.js') }}"></script>
+
     @if (Session::has('tambahData'))
         <script>
             swal({
@@ -95,48 +117,26 @@
     <script>
         $(document).ready(function() {
             loadTable();
-             var sig1 = $('#sig1').signature({
-                syncField: '#signature641',
+            var sig = $('#sig').signature({
+                syncField: '#signature64',
                 syncFormat: 'PNG'
             });
-            $('#clear1').click(function(e) {
+            $('#clear').click(function(e) {
                 e.preventDefault();
-                sig1.signature('clear');
-                $("#signature641").val('');
+                sig.signature('clear');
+                $("#signature64").val('');
             });
 
-        })
-        $('.id_rm').select2({
 
-            dropdownParent: $('.tambahData'),
-            ajax: {
-                url: "{{ route('rmd.getData') }}",
-                dataType: 'json',
-                delay: 250,
-                type: 'GET',
-                processResults: function(data) {
-                    console.log(data);
-                    return {
-                        results: $.map(data, function(item) {
-                            return {
-                                text: item.id + " - " + item.nama_pasien,
-                                id: item.id
-                            }
-                        })
-                    };
-                },
-                cache: true
-            },
-            minimumInputLength: 1
-        });
+        })
 
         function loadTable() {
-            $('#data-pengembalian').DataTable({
+            $('#data-peminjaman').DataTable({
                 "ordering": false,
                 destroy: true,
                 processing: true,
                 serverSide: true,
-                ajax: "{{ route('pengembalian.index') }}",
+                ajax: "{{ route('laporan.index') }}",
                 columns: [{
                         data: 'id',
                         name: 'id',
@@ -153,10 +153,15 @@
                         // visible: false
                     },
                     {
+                        data: 'status_keterlambatan',
+                        name: 'status_keterlambatan',
+                        // visible: false
+                    },
+                    {
                         data: 'status_peminjaman.keterangan',
                         name: 'status_peminjaman.keterangan',
                         // visible: false
-                    }, 
+                    },
                     {
                         data: 'rekam_medik.poli.keterangan',
                         name: 'rekam_medik.poli.keterangan',
@@ -167,24 +172,16 @@
                         name: 'keterangan',
                         // visible: false
                     },
-                    {
-                        data: 'waktu_peminjaman',
-                        name: 'waktu_peminjaman',
-                        // visible: false
-                    },
-                    {
-                        data: 'waktu_pengembalian',
-                        name: 'waktu_pengembalian',
-                        // visible: false
-                    },
 
-                    {
-                         data: 'verifikasi',
-                         name: 'verifikasi',
-                         visible: {{ Auth::user()->role_id == 3 ? 'true' : 'false' }}
-                     },
+                    // {
+                    //     data: 'action',
+                    //     name: 'action',
+                    //     orderable: false,
+                    //     searchable: false
+                    // },
                 ],
             });
         }
     </script>
+    <script></script>
 @endsection
