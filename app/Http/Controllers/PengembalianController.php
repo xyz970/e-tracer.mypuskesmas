@@ -39,9 +39,21 @@ class PengembalianController extends Controller
         $peminjaman = Peminjaman::find($id);
         $created_at = Carbon::createFromTimeString($peminjaman->created_at)->addDay();
         $peminjaman->waktu_pengembalian = Carbon::now();
-        if ($created_at <= Carbon::now()) {
-            $peminjaman->terlambat = 'true';   
+        /**
+         * if else 
+         * rawat jalan / inap
+         */
+        if ($peminjaman->rekam_medik->tipe_perawatan_id == 2) {
+            if ($created_at <= Carbon::now()) {
+                $peminjaman->terlambat = 'true';   
+            }    
+        } else {
+            if ($created_at <= Carbon::now()->addDay()) {
+                $peminjaman->terlambat = 'true';   
+            }
         }
+        
+        
         $peminjaman->status_id = 2;
         // dd($created_at <= Carbon::now());
         // if (Carbon::createFromTimeString($peminjaman->created_at)->addDay()) {
