@@ -487,10 +487,6 @@
                     <p style="text-align:center; font-size:12pt"><span>Alamat</span></p>
                 </td>
                 <td
-                    style="width:52.95pt; border-right-style:solid; border-right-width:0.75pt; border-left-style:solid; border-left-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top; -aw-border-bottom:0.5pt single; -aw-border-left:0.5pt single; -aw-border-right:0.5pt single">
-                    <p style="text-align:center; font-size:12pt"><span>No BPJS</span></p>
-                </td>
-                <td
                     style="width:60.05pt; border-left-style:solid; border-left-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top; -aw-border-bottom:0.5pt single; -aw-border-left:0.5pt single">
                     <p style="text-align:center; font-size:12pt"><span>Status</span></p>
                     <p style="text-align:center; font-size:12pt"><span>Berkas</span></p>
@@ -518,10 +514,6 @@
                     <td
                         style="width:53pt; border-style:solid; border-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top; -aw-border:0.5pt single">
                         <p style="text-align:center; font-size:12pt"><span>{{ $value->rekam_medik->alamat }}</span></p>
-                    </td>
-                    <td
-                        style="width:52.95pt; border-style:solid; border-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top; -aw-border:0.5pt single">
-                        <p style="text-align:center; font-size:12pt"><span>{{ $value->rekam_medik->no_bpjs }}</span></p>
                     </td>
                     <td
                         style="width:60.05pt; border-top-style:solid; border-top-width:0.75pt; border-left-style:solid; border-left-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top; -aw-border-bottom:0.5pt single; -aw-border-left:0.5pt single; -aw-border-top:0.5pt single">

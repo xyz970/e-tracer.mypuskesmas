@@ -60,10 +60,12 @@
                         </div>
                     </div>
                     <div class="card-body">
+                    @if(Auth::user()->role_id == 1)
                         <div class="pb-6">
                             <button class="btn" style="background-color: #FF3333; color:white;" type="button"
                                 data-bs-toggle="modal" data-bs-target=".tambahData">Tambah Data</button>
                         </div>
+                    @endif
                         <div class="table-responsive">
                             <table class="display" id="data-poli">
                                 <thead>
