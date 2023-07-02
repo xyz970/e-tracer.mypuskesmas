@@ -40,16 +40,17 @@
                             <h4 class="f-w-600"><span id="greeting">Good Morning</span> <span class="right-circle"><i
                                         class="fa fa-check-circle f-14 middle"></i></span></h4>
                             <p>{{ Auth::user()->nama }}</p>
-                               @if($peminjaman)
-                                 <div class="card-body">
+                            @if ($peminjaman)
+                                <div class="card-body">
                                     <p class="mb-4">
-                                        Anda belum mengembalikan berkas tracer. di mohon untuk mengembalikan segera.. ID berkas : {{ $peminjaman->id }}
+                                        Anda belum mengembalikan berkas tracer. di mohon untuk mengembalikan segera.. ID
+                                        berkas : {{ $peminjaman->id }}
                                     </p>
 
-                                    <a href="{{ route('pengembalian.index') }}"
-                                        class="btn btn-sm btn-outline-danger">Cek Sekarang</a>
+                                    <a href="{{ route('pengembalian.index') }}" class="btn btn-sm btn-outline-danger">Cek
+                                        Sekarang</a>
                                 </div>
-                               @endif
+                            @endif
                         </div>
 
                     </div>
@@ -145,13 +146,22 @@
     <script>
         var options = {
             series: [{
-                name: 'Keterlambatan',
-                data: [
-                    @for ($i = 0; $i < count($arrayChart); $i++)
-                        "{{ $pengembalian[$i]['keterlambatan'] }}",
-                    @endfor
-                ]
-            }],
+                    name: 'Keterlambatan',
+                    data: [
+                        @for ($i = 0; $i < count($arrayChart); $i++)
+                            "{{ $pengembalian[$i]['keterlambatan'] }}",
+                        @endfor
+                    ]
+                },
+                {
+                    name: 'Total Peminjaman',
+                    data: [
+                        @for ($i = 0; $i < count($arrayChart); $i++)
+                            "{{ $peminjaman_tepat_waktu[$i]['keterlambatan'] }}",
+                        @endfor
+                    ]
+                }
+            ],
             chart: {
                 type: 'bar',
                 height: 350
@@ -175,22 +185,33 @@
                 categories: [
                     @for ($i = 0; $i < count($arrayChart); $i++)
                         "{{ \Carbon\Carbon::parse($pengembalian[$i]['monthname'])->translatedFormat('F') }}",
+                    @endfor ,
+                    @for ($i = 0; $i < count($arrayChart); $i++)
+                        "{{ \Carbon\Carbon::parse($peminjaman_tepat_waktu[$i]['monthname'])->translatedFormat('F') }}",
                     @endfor
                 ],
             },
             yaxis: {
                 title: {
                     text: 'x (kali)'
-                }
+                },
+                 labels: {
+                    formatter: (value) => {
+                        return value.toFixed()
+                    },
+                },
             },
-            fill: {
-                colors: ['#F44336'],
-                opacity: 1
+            colors: ['#F44336', '#06ff45'],
+            legend: {
+                show: true,
+                position: 'bottom',
+                horizontalAlign: 'center',
             },
             tooltip: {
+               
                 y: {
                     formatter: function(val) {
-                        return val + " x (kali)"
+                        return val.toFixed() + " x (kali)"
                     }
                 }
             }

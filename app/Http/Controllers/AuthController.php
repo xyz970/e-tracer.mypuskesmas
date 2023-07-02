@@ -71,6 +71,10 @@ class AuthController extends Controller
             ->selectRaw('MONTH(created_at) AS month, MIN(MONTHNAME(created_at)) AS monthname, count(id) as keterlambatan')
             ->groupBy('month')
             ->orderBy('month', 'desc')->get()->toArray();
+        $peminjaman_tepat_waktu = Peminjaman::whereYear('created_at', '=', $year)
+            ->selectRaw('MONTH(created_at) AS month, MIN(MONTHNAME(created_at)) AS monthname, count(id) as keterlambatan')
+            ->groupBy('month')
+            ->orderBy('month', 'desc')->get()->toArray();
         $arrayChart = array();
         foreach ($pengembalian as $key => $value) {
             $arrayChart[] = $value['keterlambatan'];
@@ -103,7 +107,7 @@ class AuthController extends Controller
                 }
             }
         // dd($pengembalian);
-        return view('admin.dashboard', compact('arrayChart', 'arrayMonth', 'pengembalian','peminjaman'));
+        return view('admin.dashboard', compact('arrayChart', 'arrayMonth', 'pengembalian','peminjaman','peminjaman_tepat_waktu'));
     }
 
     public function update_akun() {
