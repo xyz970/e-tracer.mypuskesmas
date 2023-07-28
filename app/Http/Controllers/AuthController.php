@@ -48,13 +48,13 @@ class AuthController extends Controller
                         $data
                     );
                     // dispatch(new SendEmail($auth['email']));
-                    
+
                 }
             }
-            
+
             return redirect()->route('dashboard');
         } else {
-            return redirect()->back();
+            return redirect()->back()->with('error','true');
         }
     }
     public function logout()
@@ -103,7 +103,7 @@ class AuthController extends Controller
                         $data
                     );
                     // dispatch(new SendEmail($auth['email']));
-                    
+
                 }
             }
         // dd($pengembalian);

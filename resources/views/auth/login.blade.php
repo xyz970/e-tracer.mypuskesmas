@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/auth.css') }}">
     <link rel="stylesheet" href="{{ asset('css/font-awesome.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/vendors/sweetalert2.css') }}">
     <style>
         .form-control:focus {
             border-color: #FF3333 !important;
@@ -33,7 +34,7 @@
                     <form action="{{ route('login.process') }}" method="post">
                         {{ csrf_field() }}
                         <div class="form-group position-relative has-icon-left mb-4">
-                            <input type="text" class="form-control border-active form-control-xl" name="email"
+                            <input type="email" class="form-control border-active form-control-xl" name="email"
                                 placeholder="Email">
                             <div class="form-control-icon">
                                 <i class="fa fa-at"></i>
@@ -67,5 +68,16 @@
 
     </div>
 </body>
+<script src="{{ asset('js/jquery-3.5.1.min.js') }}"></script>
+<script src="{{ asset('js/sweet-alert/sweetalert.min.js') }}"></script>
+@if(\Illuminate\Support\Facades\Session::has('error'))
+    <script>
+        swal({
+            title: "Error",
+            text: "Mohon cek kembali email dan password anda",
+            icon: "error",
+        })
+    </script>
+@endif
 
 </html>
