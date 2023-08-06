@@ -37,8 +37,6 @@
                             <div class="profile-vector"><img class="img-fluid"
                                     src="{{ Auth::user()->jk == 'L' ? asset('images/dashboard/man-welcome.png') : asset('images/dashboard/woman-welcome.png') }}"
                                     alt=""></div>
-                            <h4 class="f-w-600"><span id="greeting">Good Morning</span> <span class="right-circle"><i
-                                        class="fa fa-check-circle f-14 middle"></i></span></h4>
                             <p>{{ Auth::user()->nama }}</p>
                             @if ($peminjaman)
                                 <div class="card-body">
@@ -149,7 +147,11 @@
                     name: 'Keterlambatan',
                     data: [
                         @for ($i = 0; $i < count($arrayChart); $i++)
-                            "{{ $pengembalian[$i]['keterlambatan'] }}",
+                        {
+                            x:"",
+{{--                            x:"{{ $pengembalian[$i]['monthname'] }}",--}}
+                            y:"{{ $pengembalian[$i]['keterlambatan'] }}",
+                        },
                         @endfor
                     ]
                 },
@@ -157,7 +159,10 @@
                     name: 'Total Peminjaman',
                     data: [
                         @for ($i = 0; $i < count($arrayChart); $i++)
-                            "{{ $peminjaman_tepat_waktu[$i]['keterlambatan'] }}",
+                        {
+                            x:"",
+                            y:"{{ $peminjaman_tepat_waktu[$i]['keterlambatan'] }}",
+                        },
                         @endfor
                     ]
                 }
@@ -185,9 +190,7 @@
                 categories: [
                     @for ($i = 0; $i < count($arrayChart); $i++)
                         "{{ \Carbon\Carbon::parse($pengembalian[$i]['monthname'])->translatedFormat('F') }}",
-                    @endfor ,
-                    @for ($i = 0; $i < count($arrayChart); $i++)
-                        "{{ \Carbon\Carbon::parse($peminjaman_tepat_waktu[$i]['monthname'])->translatedFormat('F') }}",
+                        {{--"{{ \Carbon\Carbon::parse($peminjaman_tepat_waktu[$i]['monthname'])->translatedFormat('F') }}",--}}
                     @endfor
                 ],
             },
@@ -208,7 +211,7 @@
                 horizontalAlign: 'center',
             },
             tooltip: {
-               
+
                 y: {
                     formatter: function(val) {
                         return val.toFixed() + " x (kali)"

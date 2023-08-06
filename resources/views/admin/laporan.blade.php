@@ -75,7 +75,7 @@
                                 <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th>Nama Pasien</th>
+                                        <th>Nama Pasien RS</th>
                                         <th>Jenis Kelamin</th>
                                         <th>Status Keterlambatan</th>
                                         <th>Status</th>
