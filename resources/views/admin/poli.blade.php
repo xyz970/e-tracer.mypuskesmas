@@ -23,7 +23,7 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="card">
-                     
+
                     <div class="modal fade tambahData" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
                         aria-hidden="true">
                         <div class="modal-dialog modal-lg">
@@ -45,7 +45,7 @@
                                                     name="keterangan" data-bs-original-title="" title="">
                                             </div>
                                         </div>
-                                        
+
 
                                 </div>
                                 <div class="modal-footer">
@@ -60,7 +60,7 @@
                         </div>
                     </div>
                     <div class="card-body">
-                    @if(Auth::user()->role_id == 1)
+                    @if(Auth::user()->role_id == 3)
                         <div class="pb-6">
                             <button class="btn" style="background-color: #FF3333; color:white;" type="button"
                                 data-bs-toggle="modal" data-bs-target=".tambahData">Tambah Data</button>
@@ -123,7 +123,7 @@
                         data: 'keterangan',
                         name: 'keterangan',
                         // visible: false
-                    }, 
+                    },
                     {
                         data: 'detail',
                         name: 'detail',

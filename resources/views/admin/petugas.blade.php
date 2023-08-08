@@ -22,7 +22,7 @@
 	<div class="row">
 		<div class="col-sm-12">
 			<div class="card">
-				
+
 				<div class="modal fade tambahData" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
 					aria-hidden="true">
 					<div class="modal-dialog modal-lg">
@@ -65,7 +65,7 @@
 												data-bs-original-title="" title="">
 										</div>
 									</div> --}}
-									
+
 									<div class="mb-3 row">
 										<label class="col-sm-3 col-form-label f-w-600" for="role_id">Role</label>
 										<div class="col-sm-9">
@@ -76,7 +76,7 @@
 											  </select>
 										</div>
 									</div>
-									
+
 									<div class="mb-3 row">
 										<label class="col-sm-3 col-form-label f-w-600" for="jk">Jenis Kelamin</label>
 										 <div class="col-sm-9">
@@ -100,8 +100,8 @@
                                                 </select> --}}
                                             </div>
 									</div>
-									
-									
+
+
 							</div>
 							<div class="modal-footer">
 								<button class="btn btn-secondary" type="button" data-bs-dismiss="modal"
@@ -115,10 +115,12 @@
 					</div>
 				</div>
 				<div class="card-body">
-					<div class="pb-6">
-						<button class="btn" style="background-color: #FF3333; color:white;" type="button"
-							data-bs-toggle="modal" data-bs-target=".tambahData">Tambah Data</button>
-					</div>
+                    @if (Auth::user()->role_id == 3)
+                        <div class="pb-6">
+                            <button class="btn" style="background-color: #FF3333; color:white;" type="button"
+                                    data-bs-toggle="modal" data-bs-target=".tambahData">Tambah Data</button>
+                        </div>
+                    @endif
 					<div class="table-responsive">
 						<table class="display" id="data-dokter">
 							<thead>
@@ -172,12 +174,12 @@
                         data: 'nama',
                         name: 'nama',
                         // visible: false
-                    }, 
+                    },
                     {
                         data: 'email',
                         name: 'email',
                         // visible: false
-                    }, 
+                    },
                     {
                         data: 'role.keterangan',
                         name: 'role.keterangan',
