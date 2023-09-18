@@ -43,14 +43,14 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="card">
-                  
+
                     <div class="card-body">
-                       
+
                         <div class="table-responsive">
                             <table class="display" id="data-pengembalian">
                                 <thead>
                                     <tr>
-                                        <th>ID</th>
+                                        <th>ID RM</th>
                                         <th>Nama Pasien</th>
                                         <th>Jenis Kelamin</th>
                                         <th>Status</th>
@@ -59,7 +59,7 @@
                                         <th>Waktu Peminjaman</th>
                                         <th>Waktu Pengembalian</th>
                                         <th>Aksi</th>
-                                        
+
                                     </tr>
                                 </thead>
                                 <tbody></tbody>
@@ -138,8 +138,8 @@
                 serverSide: true,
                 ajax: "{{ route('pengembalian.index') }}",
                 columns: [{
-                        data: 'id',
-                        name: 'id',
+                        data: 'rekam_medik.id',
+                        name: 'rekam_medik.id',
                         // visible: false
                     },
                     {
@@ -156,7 +156,7 @@
                         data: 'status_peminjaman.keterangan',
                         name: 'status_peminjaman.keterangan',
                         // visible: false
-                    }, 
+                    },
                     {
                         data: 'rekam_medik.poli.keterangan',
                         name: 'rekam_medik.poli.keterangan',

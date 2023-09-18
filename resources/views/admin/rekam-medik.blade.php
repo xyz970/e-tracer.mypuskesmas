@@ -42,13 +42,13 @@
                                             <label class="col-sm-3 col-form-label f-w-600" for="id_rm">No RM</label>
                                             <div class="col-sm-9">
                                                 <input class="id form-control" type="text" required=""
-                                                    name="id" data-bs-original-title="" title="">
+                                                    name="id" value="{{old('id')}}" data-bs-original-title="" title="">
                                             </div>
                                         </div>
                                         <div class="mb-3 row">
                                             <label class="col-sm-3 col-form-label f-w-600" for="nik">NIK</label>
                                             <div class="col-sm-9">
-                                                <input class="nik form-control" type="text" required="" name="nik"
+                                                <input class="nik form-control" type="text" required="" name="nik" id="nik"
                                                     data-bs-original-title="" title="">
                                             </div>
                                         </div>
@@ -56,7 +56,7 @@
                                             <label class="col-sm-3 col-form-label f-w-600" for="nama_pasien">Nama
                                                 Pasien</label>
                                             <div class="col-sm-9">
-                                                <input class="nama_pasien form-control" type="text" required=""
+                                                <input class="nama_pasien form-control" value="{{old('nama_pasien')}}" type="text" required=""
                                                     name="nama_pasien" data-bs-original-title="" title="">
                                             </div>
                                         </div>
@@ -107,7 +107,7 @@
                                         <div class="mb-3 row">
                                             <label class="col-sm-3 col-form-label f-w-600" for="alamat">Alamat</label>
                                             <div class="col-sm-9">
-                                                <input class="alamat form-control" type="text" required=""
+                                                <input class="alamat form-control" value="{{old('alamat')}}" type="text" required=""
                                                     name="alamat" data-bs-original-title="" title="">
                                             </div>
                                         </div>
@@ -115,7 +115,7 @@
                                             <label class="col-sm-3 col-form-label f-w-600" for="no_hp">No. HP</label>
                                             <div class="col-sm-9">
                                                 <input class="no_hp form-control" type="text" required=""
-                                                    name="no_hp" data-bs-original-title="" title="">
+                                                    name="no_hp" data-bs-original-title="" value="{{old('no_hp')}}" title="">
                                             </div>
                                         </div>
                                         <div class="mb-3 row">
@@ -125,7 +125,7 @@
                                                 {{-- <input class="datepicker-here form-control digits" name="date" type="text" id="inputRange" data-range="true" data-multiple-dates-separator=" - " data-language="en" autocomplete="off"> --}}
                                                 <input class="datepicker-here form-control digits"
                                                     data-date-format="yyyy-mm-dd" data-position="top right"
-                                                    type="text" data-language="en" required=""
+                                                    type="text" data-language="en" required="" value="{{old('tanggal_lahir')}}"
                                                     name="tanggal_lahir" data-bs-original-title="" title="">
                                             </div>
                                         </div>
@@ -173,6 +173,7 @@
     </div>
 @endsection
 
+
 @section('script')
 
     <script src="{{ asset('js/datatable/datatables/jquery.dataTables.min.js') }}"></script>
@@ -181,6 +182,15 @@
     <script src="{{ asset('js/sweet-alert/sweetalert.min.js') }}"></script>
     <script src="{{ asset('js/datepicker/date-picker/datepicker.js') }}"></script>
     <script src="{{ asset('js/datepicker/date-picker/datepicker.en.js') }}"></script>
+    @if(Session::has('duplicate_nik'))
+        <script>
+            swal({
+                title: "Error",
+                text: "Data Nik ada duplikasi",
+                icon: "error",
+            })
+        </script>
+    @endif
     @if (Session::has('tambahData'))
         <script>
             swal({
@@ -194,6 +204,25 @@
         $(document).ready(function() {
             loadTable();
         })
+        {{--$('#nik').on('change',function (){--}}
+        {{--    var val = $('#nik').val;--}}
+        {{--    var url = '{{route('check_nik',':nik')}}';--}}
+        {{--    var final_url = url.replace(':nik',val);--}}
+        {{--    console.log(final_url)--}}
+        {{--    $.ajax(--}}
+        {{--        {--}}
+        {{--            url:final_url,--}}
+        {{--            error:function(res,data){--}}
+        {{--                console.log(res);--}}
+        {{--            },--}}
+        {{--            statusCode:{--}}
+        {{--                304:function (){--}}
+        {{--                    alert('Data telah ada')--}}
+        {{--                }--}}
+        {{--            }--}}
+        {{--        }--}}
+        {{--    )--}}
+        {{--})--}}
 
         function loadTable() {
             $('#data-rmd').DataTable({

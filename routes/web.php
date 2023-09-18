@@ -102,3 +102,5 @@ Route::get('tes/notif', function () {
         }
     }
 });
+
+Route::get('check_nik/{nik}',[RekamMedikController::class,'duplicateNik'])->name('check_nik');

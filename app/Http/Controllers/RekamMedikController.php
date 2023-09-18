@@ -15,7 +15,7 @@ class RekamMedikController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function index(Request $request)
     {
@@ -66,10 +66,11 @@ class RekamMedikController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \App\Http\Requests\StoreRekamMedikRequest  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(StoreRekamMedikRequest $request)
     {
+//        return redirect()->back()->with('duplicate_nik','true');
         $input = $request->only([
             'id',
             'nik',
@@ -83,6 +84,11 @@ class RekamMedikController extends Controller
             'poli_id',
             'tipe_perawatan_id'
         ]);
+        $rm = RekamMedik::where('nik','=',$input['nik'])->first();
+//        dd($rm->nik);
+        if($rm){
+            return redirect()->back()->with('duplicate_nik','true');
+        }
         RekamMedik::create($input);
         return redirect()->back()->with('tambahData','success');
         // dd($input);
@@ -140,5 +146,15 @@ class RekamMedikController extends Controller
     {
         $rmd = RekamMedik::with(['tipe_perawatan', 'poli'])->get();
         return response()->json($rmd);
+    }
+
+    function duplicateNik($nik)
+    {
+        $rm = RekamMedik::where('nik','=',$nik)->first();
+        if (isset($rm->nik)){
+            return response()->json(['message'=>'Data nik telah ada','error'=>'true'],304);
+        }else{
+            return response()->json(['error'=>'false']);
+        }
     }
 }

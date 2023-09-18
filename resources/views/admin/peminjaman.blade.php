@@ -160,7 +160,7 @@
                             <table class="display" id="data-peminjaman">
                                 <thead>
                                     <tr>
-                                        <th>ID</th>
+                                        <th>ID RM</th>
                                         <th>Nama Pasien</th>
                                         <th>Jenis Kelamin</th>
                                         <th>Verifikasi Peminjaman</th>
@@ -248,8 +248,8 @@
                 serverSide: true,
                 ajax: "{{ route('peminjaman.index') }}",
                 columns: [{
-                        data: 'id',
-                        name: 'id',
+                        data: 'rekam_medik.id',
+                        name: 'rekam_medik.id',
                         // visible: false
                     },
                     {
